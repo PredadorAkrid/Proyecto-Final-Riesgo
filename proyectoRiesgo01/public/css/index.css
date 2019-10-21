@@ -1,0 +1,115 @@
+html{
+	background-image: url("../img/background.jpg");
+	height: 100%;
+	width: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	font-family: Report;
+
+}
+
+
+.leftside, .rightside{
+	height: 100%;
+  	width: 50%;
+  	position: fixed;
+  	z-index: 1;
+  	top: 0;
+  	overflow-x: hidden;
+ 	padding-top: 20px;
+}
+
+.leftside{
+	left: 0;
+	width: 54vw;
+
+}
+
+
+.rightside{
+	right: 0;
+	width: 46.1vw;
+	background: rgba(111, 193, 145, 0.4);
+	
+}
+
+
+button{
+	background-color: var(--azul);
+	border: none;
+	color: white;
+	padding: 0.7vw;
+	text-align: center;
+	text-decoration: none;
+	font-family: 'Varela Round', sans-serif;
+	font-size: 2.8vw;
+	cursor: pointer;
+	width: 26.8vw;
+	height: 4.8vw;
+}
+
+.button{
+	text-align: center;
+	padding-top: 30px;
+}
+
+
+
+.text1, .text2{
+	color: var(--azul-oscuro);
+	
+
+
+}
+
+.text1{
+	margin-top: 8.1vh;
+	margin-left: 3.6vw;
+	font-size: 3.6vw;
+}
+
+.text2{
+	text-align: center;
+	margin-top: 21.1vh;
+	font-size: 3.1vw;
+}
+
+h1{
+	font-weight: normal;
+	color: var(--amarillo);
+	font-size: 7.8vw;
+	margin: 0px;
+	margin-left: 3.6vw;
+	letter-spacing: 0.022em;
+	margin-top: 9.2vh;
+
+}
+
+.form_input1, .form_input2{
+	border: none;
+	margin-left: 6vw;
+}
+
+.form_input1{
+	padding-top: 32.2vh;
+}
+
+.form_input2{
+	padding-top: 4.6vh;
+}
+
+#usuario, #contraseña {
+	font-family: Report;
+	border: 1px solid var(--gris-claro);
+	background-color: white;
+	color: var(--gris-claro);
+	font-size: 3.3vw;
+	width: 34.2vw;
+	height: 8.5vh;
+	padding-left: .5em;
+}
+
+#usuario{
+	padding-top: 
+}
