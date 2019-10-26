@@ -1,0 +1,107 @@
+@font-face {
+  font-family: Report;
+  src: url(../fonts/Report.otf);
+}
+
+@font-face {
+  font-family: 'Varela Round';
+  src: url(../fonts/VarelaRound-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'Chicle';
+  src: url(../fonts/Chicle-Regular.ttf);
+}
+
+:root {
+	--rojo: #EC774B;
+	--azul: #74CEE4;
+	--verde: #6FC191;
+	--amarillo: #EDBF47;
+	--azul-oscuro: #3FBAD9;
+	--verde-oscuro: #3d8f5f;
+	--amarillo-palido: #F7EECA;
+	--gris-oscuro: #7B7B7B;
+	--gris-claro: #B5B5B5;
+}
+
+body{
+	font-family: Report;
+}
+
+#back, #salir{
+	cursor: pointer;
+	position: fixed;
+	z-index: 1000;
+	background-color: var(--azul);
+	text-align: center;
+}
+
+#back{
+	top: 3.2vh;
+	left: 0px;
+	width: 6.9vw;
+	height: 3.7vw;
+	border-radius: 0px 1.9vw 1.9vw 0px;
+	
+}
+
+#back img{
+	width: 3.5vw;
+}
+
+#salir{
+	font-family: 'Varela Round', sans-serif;
+	top: 3.2vh;
+	right: 0px;
+	width: 10.4vw;
+	height: 3.7vw;
+	border-radius: 1.9vw 0px 0px 1.9vw;
+	font-size: 2.9vw;
+	color: white;
+}
+
+.text{
+	font-family: 'Chicle';
+	color: #969696;
+	font-size: 2.8vw;
+}
+
+button{
+	background-color: var(--azul);
+	border: none;
+	color: white;
+	text-align: center;
+	text-decoration: none;
+	font-family: 'Varela Round', sans-serif;
+	font-size: 2.8vw;
+	cursor: pointer;
+	width: 26.8vw;
+	height: 4.8vw;
+	padding: 0px;
+}
+
+button a{
+	width: 26.1vw;
+	height: 4.1vw;
+	display: block;
+	text-decoration: none;
+	color: white;
+	padding: 0px;
+	padding-top: 0.7vw;
+	padding-left: 0.7vw;
+}
+
+.button{
+	text-align: center;
+	padding-top: 30px;
+}
+
+#logo{
+	position: fixed;
+	width: 235px;
+	height: 121px;
+	right: 0;
+	bottom: 0;
+	z-index: 1000;
+}
