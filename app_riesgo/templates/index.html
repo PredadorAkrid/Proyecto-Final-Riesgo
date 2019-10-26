@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Index</title>
+	
+	<link rel="stylesheet"  href="{{ url_for('static', filename='css/styles.css') }}">
+	<link rel="stylesheet" type="text/css"  href="{{ url_for('static', filename='css/index.css') }}">
+
+</head>
+<body>
+	
+	<div class="container">
+				
+		<div class="leftside grid-template-column">
+
+				<h1>Bienvenido</h1>
+
+				<div class="text1">Esta aplicación es una herramienta complementaria a tu curso de inglés</div>
+
+				<div class="text2">¿Aún no tienes cuenta?</div>
+
+				<div class="button" >
+					<form class="form_register" method="POST">
+						<button type="submit" name="register_button">Regístrate</button>
+					</form>
+					<!--
+					<button type="button">
+						<a href="registro.html">
+							Regístrate
+						</a>
+					</button>
+					-->
+				</div>
+		</div>
+
+		<div class="rightside grid-template-column">
+			<form class="form_login" method="POST">
+				<div class="form_input1">
+					<input type="text" name="usuario" id="usuario" placeholder="Usuario">
+				</div>
+				
+				<div class="form_input2">
+					<input type="password" name="contraseña" id="contraseña" placeholder="Contraseña">
+				</div>
+
+				<div class="button">
+					
+					<button type="submit" name="login_button">Iniciar sesión</button>
+
+				</div>
+
+			</form>
+
+		</div>
+		<div id="logo">
+			<img src="{{url_for('static', filename='img/logo.png')}}">
+		</div>
+	</div>
+
+	
+
+
+
+</body>
+</html>

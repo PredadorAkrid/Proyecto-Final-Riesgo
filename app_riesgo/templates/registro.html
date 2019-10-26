@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="utf-8"/>
+	<title>Registro</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles-register.css') }}">
+	<link href="https://fonts.googleapis.com/css?family=Comfortaa|Varela+Round&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+</head>
+<body>
+	<div class="container">
+
+		<div class="home_button">
+			<button type="button" class="home_button1">
+				<i class="material-icons" style="font-size: 50px;">home</i>
+			</button>
+		</div>
+
+		<div class="register">
+			<h1 class="register_1">Registro</h1>
+		</div>
+		
+
+		<form class="form_register" method="POST">
+			
+			<div class="form_input1">
+				<input type="text" name="usuario" id="usuario" placeholder="Usuario">
+			</div>
+
+			<div class="form_input2">
+				<input type="text" name="contraseña" id="contraseña" placeholder="Contraseña">
+			</div>
+
+			<div class="form_input3">
+				<input type="text" name="contraseña_conf" id="contraseña_conf" placeholder="Confirmar contraseña">
+			</div>
+
+			<div class="register_button">
+				<button type="button" class="register_button1">Registrarte</button>
+			</div>
+
+		</form>
+	</div>
+
+</body>
+</html>
