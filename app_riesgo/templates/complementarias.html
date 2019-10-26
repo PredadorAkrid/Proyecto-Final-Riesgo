@@ -3,20 +3,22 @@
 	<head> 
 		<title>Lecturas complementarias</title>
 
-		<link rel="stylesheet" href="../css/styles.css" type="text/css">
-	    <link rel="stylesheet" href="../css/complementarias.css" type="text/css">
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" type="text/css">
+	    <link rel="stylesheet" href="{{ url_for('static', filename='css/complementarias.css') }}" type="text/css">
 	
 	</head>
 	<body>
 
 		<a href="home.html">
 			<div id="back">
-				<img src="../img/home-button.png">
+				<img src="{{url_for('static', filename='img/home-button.png')}}">
 			</div>
 		</a>
 		<div id="salir">
-			Salir
-		</div>
+			<form class="form_salir" method="POST">
+				<button type="submit" name="salir_button">Salir</button>
+			</form>
+		</div>	
 		
 		<h1>Lecturas complementarias</h1>
 
@@ -32,7 +34,7 @@
 			</div>
 		</div>
 		<div id="logo">
-			<img src="../img/logo.png">
+			<img src="{{url_for('static', filename='img/logo.png')}}">
 		</div>
 	</body>
 

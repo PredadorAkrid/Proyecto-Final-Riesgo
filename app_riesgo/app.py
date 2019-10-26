@@ -134,8 +134,17 @@ def Index():
 		elif 'register_button' in request.form:
 			#return redirect('Register')
 			return redirect('/register') # do something else
-		
-
+#@app.route('/getsession')
+def getSession():
+	if 'nombre' in session:
+		return session['nombre']
+	return 'No existe una sesión activa'		
+#@app.route('/removesession')
+def removeSession():
+	if 'nombre' in session:
+		session.pop('nombre', None)
+		return redirect(url_for('Index'))
+	return 'No se encontró la sesión' 
 #Ruta para vista de registro
 @app.route('/register', methods=['GET', 'POST'])
 def Register():
@@ -157,13 +166,30 @@ def Register():
 @app.route('/home', methods=['GET', 'POST'])
 def Home():
 	if request.method == 'GET':
+		if 'nombre' in session:
+							return render_template("home.html")
+		else:
+			return redirect(url_for('Index'))
+	
+	if request.method == 'POST':
+		if 'salir_button' in request.form:
+			print("entra")
+			return removeSession()
+		elif 'complementarias_button' in request.form:
+			print("entra a complementarias")
+			return render_template("complementarias.html");
+		elif 'obligatorias_button' in request.form:
+			print("entra a obligatorias")
+			return render_template("obligatorias.html")
+		else:
+			return "Aquí falta agregar los otros dos botones"
+
 		#print("Sesión inválida")
 		#redirect(url_for('/'))
 
 		#nombre = session['nombre']
 		#contra = session['password']
 		#print(nombre +  "  asd  " + contra)
-		return render_template("home.html");
 
 
 

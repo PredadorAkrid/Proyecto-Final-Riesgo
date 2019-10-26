@@ -3,19 +3,21 @@
 	<head> 
 		<title>Lecturas obligatorias</title>
 
-		<link rel="stylesheet" href="../css/styles.css" type="text/css">
-	    <link rel="stylesheet" href="../css/obligatorias.css" type="text/css">
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" type="text/css">
+	    <link rel="stylesheet" href="{{ url_for('static', filename='css/obligatorias.css') }}" type="text/css">
 	
 	</head>
 	<body>
 
 		<a href="home.html">
 			<div id="back">
-				<img src="../img/home-button.png">
+				<img src="{{url_for('static', filename='img/home-button.png')}}">
 			</div>
 		</a>
 		<div id="salir">
-			Salir
+			<form class="form_salir" method="POST">
+				<button type="submit" name="salir_button">Salir</button>
+			</form>
 		</div>
 		
 		<h1>Lecturas obligatorias</h1>
@@ -36,7 +38,7 @@
 			</div>
 		</div>
 		<div id="logo">
-			<img src="../img/logo.png">
+			<img src="{{url_for('static', filename='img/logo.png')}}">
 		</div>
 	</body>
 

@@ -10,24 +10,36 @@
 	<body>
 
 		<div id="salir">
-			Salir
-		</div>
+			<form class="form_salir" method="POST">
+				<button type="submit" name="salir_button">Salir</button>
+			</form>
+		</div>	
 		
 		<h1>Bienvenido usuario</h1>
 
 		<img id="userpic" src="{{url_for('static', filename='img/jake.jpg')}}">
 
 		<div class="container">
+			<form class="form_complementarias" method="POST">
+				<button type="submit" name="complementarias_button">Complementarias</button>
+			</form>
+			<!--
 			<a href="complementarias.html">
 				<div id="complementarias">
 					Lecturas complementarias
 				</div>
 			</a>
+			-->
+			<form class="form_obligatorias" method="POST">
+				<button type="submit" name="obligatorias_button">Obligatorias</button>
+			</form>
+			<!--
 			<a href="obligatorias.html">
 				<div id="obligatorias">
 					Lecturas obligatorias
 				</div>
 			</a>
+			-->
 		</div>
 		<div id="logo">
 			<img src="{{url_for('static', filename='img/logo.png')}}">
