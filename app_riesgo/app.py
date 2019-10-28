@@ -105,6 +105,7 @@ def Index():
 			#res = db_session.execute(sql)
 			#result = cur.execute("select * from dummy_table where nombre=%s AND contra=%s;",(usuario, password))
 			result = db_session.query(DummyTable).filter(DummyTable.nombre == usuario).filter(DummyTable.contra == password).first()
+			
 			#if(len(result) == 0):
 			#	return redirect(url_for('/'))
 			#else:
@@ -177,7 +178,7 @@ def Home():
 			return removeSession()
 		elif 'complementarias_button' in request.form:
 			print("entra a complementarias")
-			return render_template("complementarias.html");
+			return redirect(url_for("Complementarias"));
 		elif 'obligatorias_button' in request.form:
 			print("entra a obligatorias")
 			return render_template("obligatorias.html")
@@ -190,7 +191,44 @@ def Home():
 		#nombre = session['nombre']
 		#contra = session['password']
 		#print(nombre +  "  asd  " + contra)
-
+@app.route('/home/complementarias', methods=['GET','POST'])
+def Complementarias():
+	if request.method == 'GET':
+		if 'nombre' in session:
+				return render_template("complementarias.html")
+		else:
+			return redirect(url_for('Index'))
+	if request.method == 'POST':
+		if 'salir_button' in request.form:
+			print("entra")
+			return removeSession()
+		elif 'lectura_01_button' in request.form:
+			return redirect(url_for('Complementaria01'))
+		elif 'lectura_02_button' in request.form:
+			return redirect(url_for('Complementaria02'))
+		elif 'lectura_03_button' in request.form:
+			return redirect(url_for('Complementaria03'))
+		else:
+			return redirect(url_for('Complementarias'))
+@app.route('/home/obligatorias', methods=['GET','POST'])
+def Obligatiorias():
+	if request.method == 'GET':
+		if 'nombre' in session:
+				return render_template("obligatorias.html")
+		else:
+			return redirect(url_for('Index'))
+	if request.method == 'POST':
+		if 'salir_button' in request.form:
+			print("entra")
+			return removeSession()
+		elif 'lectura_01_button' in request.form:
+			return redirect(url_for('Complementaria01'))
+		elif 'lectura_02_button' in request.form:
+			return redirect(url_for('Complementaria02'))
+		elif 'lectura_03_button' in request.form:
+			return redirect(url_for('Complementaria03'))
+		else:
+			return redirect(url_for('Obligatorias'))
 
 
 
