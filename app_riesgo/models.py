@@ -9,7 +9,11 @@ from sqlalchemy import Boolean, DateTime, Column, Integer, \
                        String, ForeignKey
 from database import Base
 
-DummyTable = Base.classes.dummy_table
+RegistroAlumno = Base.classes.registro_alumno
+Alumno = Base.classes.alumno
+RegistroTutor = Base.classes.registro_tutor
+Tutor = Base.classes.tutor
+
 
 
 

@@ -1,0 +1,66 @@
+<html>
+	<head>
+		<title>Unidad 1 Lectura 3 - Video Games</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" type="text/css">
+	    <link rel="stylesheet" href="{{ url_for('static', filename='css/lecturas.css') }}" type="text/css">
+	</head>
+	<body>
+		<button id="menuO" class="izq side" type="submit" name="menuO_btn">
+			<img src="{{ url_for('static', filename='img/left-arrow.png') }}">
+		</button>
+		
+		<button id="salir" class="der side" type="submit" name="salir_btn" >
+			Salir
+		</button>
+
+		<div id="sidenav">
+			<div>
+				<p>Unidad 1</p>
+				<button id="lectura1" class="link" name="lecturaO1.1_btn">Lectura 1</button>
+				<button id="lectura2" class="link" name="lecturaCO1.2_btn">Lectura 2</button>
+				<b class="active">Lectura 3</b>
+			</div>
+		</div>
+
+		<div class="main">
+			<h1>Unidad 1 Lectura 3</h1>
+			<div id="title">
+				<h2>Video Games</h2>
+				<div id="act-button" class="button">
+						<button type="button" class="boton">
+							<a href="#actividad">
+								Ir a la actividad
+							</a>
+						</button>
+
+				</div>
+			</div>
+			<div class="text">
+				<p>The first video games were developed by professors and scientists as research experiments in the 1950s.</p>
+			<p>In 1967, Ralph Baer developed the first multiplayer video game system known as the Brown Box. The system could be used with a television and was sold as the Odyssey.</p>
+			<p>The Odyssey never did very well and soon died out, but one of the games lived on as inspiration for Atari's game, Pong. This popular game started out in arcades before moving to homes.</p>
+			<p>In 1977, Atari released the Atari 2600. This gaming device had multiple games and joysticks.</p>
+			<p>In the late 1970s and early 1980s, Nintendo, a Japanese company introduced Donkey Kong. Pac Man was a popular arcade game.
+			During the early 1980s, the video game industry crashed and several companies went bankrupt.</p><p>
+			In 1985, Nintendo released the Nintendo Entertainment System in the U.S. Better graphics and technology made the product a hit. They released Legend of Zelda and Super Mario Brothers, games still popular today.
+			</p><p>In 1989, Nintendo released Gameboy, a handheld gaming device.
+			Sega gained popularity during the 1990s, competing against Nintendo.
+			In 1995, Sony released its first gaming console, PlayStation. PlayStation 2, released in 2000, is the best-selling game console of all time.</p>
+			</div>
+
+			<div id="actividad">
+				<div class="button">
+					<button id="calificar" type="button" class="boton">
+						Terminar y calificar
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<div id="logo">
+			<img src="{{ url_for('static', filename='img/logo.png') }}">
+		</div>
+	</body>
+</html>

@@ -8,41 +8,28 @@
 	
 	</head>
 	<body>
+		<button id="salir" class="der side" type="submit" name="salir_btn" >
+			Salir
+		</button>
 
-		<div id="salir">
-			<form class="form_salir" method="POST">
-				<button type="submit" name="salir_button">Salir</button>
-			</form>
-		</div>	
-		
-		<h1>Bienvenido usuario</h1>
+		<button id="calif" class="small der side" type="submit" name="calif_btn">
+			Calificaciones
+		</button>
 
-		<img id="userpic" src="{{url_for('static', filename='img/jake.jpg')}}">
+		<h1>Bienvenido estudiante</h1>
+
+		<img id="userpic" src="{{ url_for('static', filename='img/estudiante.png') }}">
 
 		<div class="container">
-			<form class="form_complementarias" method="POST">
-				<button type="submit" name="complementarias_button">Complementarias</button>
-			</form>
-			<!--
-			<a href="complementarias.html">
-				<div id="complementarias">
-					Lecturas complementarias
-				</div>
-			</a>
-			-->
-			<form class="form_obligatorias" method="POST">
-				<button type="submit" name="obligatorias_button">Obligatorias</button>
-			</form>
-			<!--
-			<a href="obligatorias.html">
-				<div id="obligatorias">
-					Lecturas obligatorias
-				</div>
-			</a>
-			-->
+			<button id="complementarias">
+				Lecturas complementarias
+			</button>
+			<button id="obligatorias">
+				Lecturas obligatorias
+			</button>
 		</div>
 		<div id="logo">
-			<img src="{{url_for('static', filename='img/logo.png')}}">
+			<img src="{{ url_for('static', filename='img/logo.png') }}">
 		</div>
 	</body>
 

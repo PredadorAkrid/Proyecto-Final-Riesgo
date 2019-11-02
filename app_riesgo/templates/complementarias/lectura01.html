@@ -1,58 +1,74 @@
 <html>
 	<head>
-		<title>Lectura 1 - AQUÍ VA EL TÍTULO</title>
+		<title>Lectura 1 - Spaghetti & meatballs with hidden veg sauce</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
-		<link rel="stylesheet" href="../../css/styles.css">
-		<link rel="stylesheet" href="../../css/lecturas.css">
+		<link rel="stylesheet" href="../../static/css/styles.css" type="text/css">
+	    <link rel="stylesheet" href="../../static/css/lecturas.css" type="text/css">
 	</head>
 	<body>
-		<a href="../home.html">
-			<div id="back">
-				<img src="../../img/home-button.png">
-			</div>
-		</a>
-		<div id="salir">
+		<button id="menuC" class="izq side" type="submit" name="menuC_btn">
+			<img src="{{ url_for('static', filename='img/left-arrow.png') }}">
+		</button>
+		
+		<button id="salir" class="der side" type="submit" name="salir_btn" >
 			Salir
-		</div>
+		</button>
+
 		<div id="sidenav" class="comp">
 			<div>
 				<b class="active">Lectura 1</b>
-				<a href="lectura02.html">Lectura 2</a>
-				<a href="lectura03.html">Lectura 3</a>
+				<button id="lectura2" class="link" name="lecturaC2_btn">Lectura 2</button>
+				<button id="lectura3" class="link" name="lecturaC3_btn">Lectura 3</button>
 			</div>
 		</div>
 
 		<div class="main">
 			<h1>Lectura 1</h1>
-			<div id="title">
-				<h2>AQUÍ VA EL TÍTULO</h2>
-				<div id="act-button" class="button">
-						<button type="button">
-							<a href="#actividad">
-								Ir a la actividad
-							</a>
-						</button>
-
-				</div>
-			</div>
+			<h2>Spaghetti & meatballs with hidden veg sauce</h2>
 			<div class="text">
-				
+				<b>Ingredients</b>
+				<p>
+					<u>For the meatballs:</u>
+					<ul>
+						<li>300g good quality pork sausage (about 4 large or 8 chipolatas)</li>
+				    	<li>500g lean beef mince</li>
+				    	<li>1 small onion, coarsely grated</li>
+				    	<li>1 carrot, finely grated</li>
+				    	<li>1 tbsp dried oregano</li>
+				    	<li>50g parmesan, finely grated, plus extra to serve</li>
+				    	<li>1 medium egg</li>
+				    	<li>1 tbsp olive oil</li>
+				    </ul>
+					<u>For the tomato sauce:</u>
+					<ul>
+				    	<li>1 tbsp olive oil</li>
+				    	<li>1 courgette, coarsely grated</li>
+				    	<li>3 garlic cloves, finely grated</li>
+				    	<li>1 tbsp tomato purée</li>
+				    	<li>pinch caster sugar</li>
+				    	<li>splash red wine vinegar</li>
+				    	<li>2x 400g tins chopped tomato</li>
+				    </ul>
+				</p>
+			    <b>Method</b>
+			    <p><u>Children:</u></p>
+			    <ol>
+			    	<li>Squeeze all the sausage meat out of the sausage skins into a large bowl and add the mince. Tip all the rest of the meatball ingredients, except the olive oil, into the bowl and season with black pepper then squish everything together through your hands until completely mixed. <b>Keep an eye on younger children to make sure they don’t taste any of the raw mix.</b></li>
+			    	<li>Roll the meatball mix into walnut-sized balls and place them on a plate – this is a job children as young as 2 can help with and a great job to help teach older children basic division.</li>
+			    </ol>
+			    <u>Grown ups:</u>
+			    <ol>
+			    	<li>While the children are rolling the meatballs make the sauce. Heat the oil in a large saucepan. Add the courgette and garlic and cook for 5 mins until soft and mushy. Stir in the tomato puree, sugar and vinegar leave for 1 min then tip in the tomatoes and simmer for 5 mins. If your children like courgettes then you can leave the sauce chunky. But if, like mine, they hate courgettes then blitz the sauce with a hand blender – either way continue to simmer sauce gently while you cook the meatballs. If your child is confident with heat, from 7+ they can cook the sauce with supervision.</li>
+			    	<li>Heat the oil in a large frying pan and, working in batches, brown the meatballs on all sides then pop them into the sauce – continue to simmer the sauce for 15 mins, stirring very gently until the meatballs are cooked through. Serve with cooked spaghetti, extra grated Parmesan and a few torn basil leaves your child has picked and torn.</li>
+			    </ol>
 			</div>
 
-			<div id="actividad">
-				<div class="button">
-					<button type="button">
-						<a href="#">
-							Terminar y calificar
-						</a>
-					</button>
-				</div>
-			</div>
 		</div>
 
 		<div id="logo">
-			<img src="../../img/logo.png">
+			<img src="{{ url_for('static', filename='img/logo.png') }}">
 		</div>
+
 	</body>
 </html>

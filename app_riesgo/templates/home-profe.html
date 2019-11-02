@@ -1,0 +1,44 @@
+<html>
+
+	<head> 
+		<title>Home - profesor </title>
+
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" type="text/css">
+	    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}" type="text/css">
+	
+	</head>
+	<body>
+		<form name="form_salir" method="POST">
+		<button id="salir" class="der side" type="submit" name="salir_button" >
+			Salir
+		</button>
+		</form>
+		<form name="form_grupo" method="POST">
+			<button id="grupo" class="small der side" type="submit" name="grupo_button">
+				Grupo
+			</button>
+		</form>
+		<form name="form_calificaciones" method="POST">
+			<button id="califg" class="small der side" type="submit" name="calificaciones_button">
+				Calificaciones
+			</button>
+		</form>
+		<h1>Bienvenido profesor</h1>
+
+		<img id="userpic" src="{{ url_for('static', filename='img/profesor.png') }}">
+		<form name="form_lecturas" method="POST">
+		<div class="container">
+			<button id="complementarias" name="complementarias_button">
+				Lecturas complementarias
+			</button>
+			<button id="obligatorias" name="obligatorias_button">
+				Lecturas obligatorias
+			</button>
+		</div>
+		</form>
+		<div id="logo">
+			<img src="{{ url_for('static', filename='img/logo.png') }}">
+		</div>
+	</body>
+
+</html>

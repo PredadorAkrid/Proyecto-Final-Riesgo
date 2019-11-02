@@ -1,0 +1,58 @@
+<html>
+	<head>
+		<title>Unidad 2 Lectura 2 - AQUÍ VA EL TÍTULO</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" type="text/css">
+	    <link rel="stylesheet" href="{{ url_for('static', filename='css/lecturas.css') }}" type="text/css">
+	</head>
+	<body>
+		<button id="menuO" class="izq side" type="submit" name="menuO_btn">
+			<img src="{{ url_for('static', filename='img/left-arrow.png') }}">
+		</button>
+		
+		<button id="salir" class="der side" type="submit" name="salir_btn" >
+			Salir
+		</button>
+
+		<div id="sidenav">
+			<div>
+				<p>Unidad 2</p>
+				<button id="lectura1" class="link" name="lecturaO2.1_btn">Lectura 1</button>
+				<b class="active">Lectura 2</b>
+				<button id="lectura3" class="link" name="lecturaO2.3_btn">Lectura 3</button>
+			</div>
+		</div>
+
+		<div class="main">
+			<h1>Unidad 2 Lectura 2</h1>
+			<div id="title">
+				<h2>AQUÍ VA EL TÍTULO</h2>
+				<div id="act-button" class="button">
+						<button type="button" class="boton">
+							<a href="#actividad">
+								Ir a la actividad
+							</a>
+						</button>
+
+				</div>
+			</div>
+			<div class="text">
+							
+			</div>
+
+			<div id="actividad">
+				<div class="button">
+					<button id="calificar" type="button" class="boton">
+						Terminar y calificar
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<div id="logo">
+			<img src="{{ url_for('static', filename='img/logo.png') }}">
+		</div>
+		
+	</body>
+</html>

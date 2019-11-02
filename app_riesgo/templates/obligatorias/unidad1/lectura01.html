@@ -1,35 +1,34 @@
 <html>
 	<head>
-		<title>Unidad 1 Lectura 1 - The History of Computers</title>
+		<title>Unidad 1 Lectura 1 - Superheroes</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
-		<link rel="stylesheet" href="../../../css/styles.css">
-		<link rel="stylesheet" href="../../../css/lecturas.css">
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" type="text/css">
+	    <link rel="stylesheet" href="{{ url_for('static', filename='css/lecturas.css') }}" type="text/css">
 	</head>
 	<body>
-		<a href="../../home.html">
-			<div id="back">
-				<img src="../../../img/home-button.png">
-			</div>
-		</a>
-		<div id="salir">
+		<button id="menuO" class="izq side" type="submit" name="menuO_btn">
+			<img src="{{ url_for('static', filename='img/left-arrow.png') }}">
+		</button>
+		
+		<button id="salir" class="der side" type="submit" name="salir_btn" >
 			Salir
-		</div>
+		</button>
+
 		<div id="sidenav">
 			<div>
 				<p>Unidad 1</p>
 				<b class="active">Lectura 1</b>
-				<a href="lectura02.html">Lectura 2</a>
-				<a href="lectura03.html">Lectura 3</a>
+				<button id="lectura2" class="link" name="lecturaO1.2_btn">Lectura 2</button>
+				<button id="lectura3" class="link" name="lecturaCO1.3_btn">Lectura 3</button>
 			</div>
 		</div>
-
 		<div class="main">
 			<h1>Unidad 1 Lectura 1</h1>
 			<div id="title">
-				<h2>The History of Computers</h2>
+				<h2>Superheroes</h2>
 				<div id="act-button" class="button">
-						<button type="button">
+						<button type="button" class="boton">
 							<a href="#actividad">
 								Ir a la actividad
 							</a>
@@ -38,29 +37,27 @@
 				</div>
 			</div>
 			<div class="text">
-				<p>In 1833 a man by the name of Charles Babbage invented all the parts that are now used for a modern computer. But it was only 120 years later that the first ‘modern’ computers were invented.</p>
-				<p>Konrad Zuse was the inventor of the first computer in the world in 1936 and he named it the Z1.</p>
-				<p>In 1939, he created the Z2 as the first electro-mechanical computer in the world.</p>
-				<p>So computers were born, and these early computers were made in the 1940s and were around the size of a large room and they used heaps of electricity.</p>
-				<p>Can you imagine having a computer the size of a large room? How would you be able to sit in front of it?</p>
-				<p>Computers as we know them today only really started being made in 1980.</p>
-				<p>In 1980, the first one gigabyte disk drive was released in the world.</p>
-				<p>It was a whopping US$40,000 with the weight of 550 pounds (almost 227kg). How on Earth did they move it?</p>
+				<p>For thousands of years people have told stories about heroes. Heroes are strong, brave people who help others. Today we can read stories and watch films about superheroes. What is a superhero?</p>
+			<p>Superheroes have special powers which they use to do good things like helping people and fighting crime. They usuallywear special clothes, like a cape. Sometimes they wear a mask so no one knows who they are. Some superheroes use gadgets, like Spiderman’s web shooter.</p>
+			<p>Modern superheroes started as stories in comic books.
+			Superman was one of the first famous superheroes. The first Superman comic was published in 1938. Superman is an alien from the planet Krypton. He can fly and he is super strong. He is super fast and no weapons can hurt him. The only thing that can hurt him is Kryptonite rock from his planet. 
+			</p>
+			<p>In 1941, Wonder Woman was created. She was the first female superhero. Wonder Woman’s story comes from ancient Greek myths. She has some superhuman powers like Superman. She is good at fighting and she has a lots of weapons too like a lasso and magic bracelets.
+			</p>
+			<p>Sometimes superheroes have friends that help them, like Jimmy Olsen in the Superman stories. These friends are called ‘sidekicks’. One of the most famous sidekicks is Robin from ‘Batman and Robin’. Sometimes superheroes group together like Iron Man, Captain America and Thor in the Avengers, or the mutants in the X-Men team.</p>
 			</div>
 
 			<div id="actividad">
 				<div class="button">
-					<button type="button">
-						<a href="#">
-							Terminar y calificar
-						</a>
+					<button id="calificar" type="button" class="boton">
+						Terminar y calificar
 					</button>
 				</div>
 			</div>
 		</div>
 
 		<div id="logo">
-			<img src="../../img/logo.png">
+			<img src="{{ url_for('static', filename='img/logo.png') }}">
 		</div>
 	</body>
 </html>

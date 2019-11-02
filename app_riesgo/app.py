@@ -1,4 +1,4 @@
- #!/usr/bin/python
+#!/usr/bin/python
  # -*- coding: utf-8 -*-
 from flask import Flask
 from flask import render_template
@@ -9,8 +9,6 @@ from flask import escape
 from flask import *
 from flask_sqlalchemy import SQLAlchemy
 from flask_security import Security, SQLAlchemyUserDatastore,  login_required, UserMixin, RoleMixin
-from sqlalchemy import Column, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 from flask_security.utils import hash_password
@@ -23,7 +21,11 @@ from database import connection as cur
 
 
 ##Importar modelos de models
-from models import DummyTable as DummyTable
+from models import RegistroAlumno as RegistroAlumno
+from models import Alumno as Alumno
+from models import RegistroTutor as RegistroTutor
+from models import Tutor as Tutor
+
 
 
 #Configuración del app y de la base
@@ -85,10 +87,13 @@ security = Security(app, user_datastore)
 #Vista de bienvenida, primera que cargamos
 @app.route("/", methods=['GET', 'POST'])
 def Index():
-	session.clear()
 	if request.method == 'GET':
+		#ésto mata todas las sesiones alv
+		#session.clear()
 		return render_template("index.html")
 	elif request.method == 'POST':
+		
+
 		#for clave in db_session.query(ent.clave):
 		#		print(clave)
 		if 'login_button' in request.form:
@@ -104,19 +109,32 @@ def Index():
 			#sql = "select *  from dummy_table"
 			#res = db_session.execute(sql)
 			#result = cur.execute("select * from dummy_table where nombre=%s AND contra=%s;",(usuario, password))
-			result = db_session.query(DummyTable).filter(DummyTable.nombre == usuario).filter(DummyTable.contra == password).first()
+			result_alumnos = db_session.query(RegistroAlumno).filter(RegistroAlumno.usuario == usuario).filter(RegistroAlumno.contraseña == password).first()
+			result_tutores = db_session.query(RegistroTutor).filter(RegistroTutor.usuario == usuario).filter(RegistroTutor.contraseña ==  password).first()
+			
 			
 			#if(len(result) == 0):
 			#	return redirect(url_for('/'))
 			#else:
-			if(result == None):
-				return redirect('/')
-			else:
+			if(result_alumnos == None and result_tutores == None):
+				flash("No existe el usario")
+				print("entra al caso que no debe")
+				return redirect(url_for('Index'))
+			elif(result_alumnos != None):
+				print("entra a caso alumnos")
 				session['nombre'] = usuario
 				session['password'] = password
-				print(result.nombre)
-				print(result.contra)
+				print(result_alumnos.usuario)
+				print(result_alumnos.contraseña)
 				return redirect(url_for('Home'))
+			elif(result_tutores != None):
+				print("entra a caso tutores")
+				session['nombre'] = usuario
+				session['password'] = password
+				return redirect(url_for('HomeTutor'))
+			else:
+				print("entra al else index")
+				return redirect('/')
 			#result = db_session.query(DummyTable)
 			
 			#names = [print(row) for row in result]
@@ -134,7 +152,7 @@ def Index():
 			'''
 		elif 'register_button' in request.form:
 			#return redirect('Register')
-			return redirect('/register') # do something else
+			return redirect(url_for('Register')) # do something else
 #@app.route('/getsession')
 def getSession():
 	if 'nombre' in session:
@@ -144,33 +162,48 @@ def getSession():
 def removeSession():
 	if 'nombre' in session:
 		session.pop('nombre', None)
+		session.pop('contraseña', None)
 		return redirect(url_for('Index'))
-	return 'No se encontró la sesión' 
+	return redirect(url_for('Index')) 
+
 #Ruta para vista de registro
 @app.route('/register', methods=['GET', 'POST'])
 def Register():
 	if request.method == 'GET':
 		return render_template("registro.html")
 	elif register.method == 'POST':
-		usuario = request.form['usuario']
-		password = request.form['contraseña']
-		passwordConf = request.form['contraseña_conf']
+		if 'salir_button' in request.form:
+			return redirect(url_for('Index'))
+		elif 'register_button' in request.form:
+			
+			usuario = request.form['usuario']
+			password = request.form['contraseña']
+			passwordConf = request.form['contraseña_conf']
 		####¿Lo necesitamos?
 		#user_datastore.create_user(
 		#	username = request.form.get('usuario'),
 		#	password = hashpassword(request.form.get('contraseña'))
 		#)
 		#db.session.commit()
-		return redirect(url_for('index'))
+			return redirect(url_for('index'))
 
 #Ruta para el home
 @app.route('/home', methods=['GET', 'POST'])
 def Home():
+	
 	if request.method == 'GET':
-		if 'nombre' in session:
-							return render_template("home.html")
-		else:
-			return redirect(url_for('Index'))
+		try:
+			nombreUsuario =  session['nombre']
+			password = session['password']
+			result_alumnos = db_session.query(RegistroAlumno).filter(RegistroAlumno.usuario == nombreUsuario).filter(RegistroAlumno.contraseña ==  password).first()
+			if(result_alumnos == None):
+				print("entra a la línea 200")
+				#return redirect(url_for('Index'))
+				return removeSession()
+			else:
+				return render_template("home.html")
+		except:
+			return removeSession()
 	
 	if request.method == 'POST':
 		if 'salir_button' in request.form:
@@ -191,6 +224,45 @@ def Home():
 		#nombre = session['nombre']
 		#contra = session['password']
 		#print(nombre +  "  asd  " + contra)
+@app.route('/home_tutor', methods=['GET', 'POST'])
+def HomeTutor():
+	if request.method == 'GET':
+		try:
+			nombreTutor =  session['nombre']
+			password = session['password']
+			result_tutores = db_session.query(RegistroTutor).filter(RegistroTutor.usuario == nombreTutor).filter(RegistroTutor.contraseña ==  password).first()
+			if(result_tutores == None):
+				print("entra a la línea 226")
+				return redirect(url_for('Index'))
+			else:
+				return render_template("home-profe.html")
+		except:
+			return redirect(url_for('Index'))
+	if request.method == 'POST':
+		if 'salir_button' in request.form:
+			return removeSession()
+		elif 'complementarias_button' in request.form:
+			print("entra a complementarias")
+			return redirect(url_for("Complementarias"));
+		elif 'obligatorias_button' in request.form:
+			print("entra a obligatorias")
+			return redirect(url_for("Obligatorias"))
+		elif 'grupo_button' in request.form:
+			return redirect(url_for("Grupo"))
+		elif 'calificaciones_button' in request.form:
+			return redirect(url_for('Calificaciones'))
+		else:
+			return "Aquí falta agregar los otros dos botones"
+
+		#print("Sesión inválida")
+		#redirect(url_for('/'))
+
+		#nombre = session['nombre']
+		#contra = session['password']
+		#print(nombre +  "  asd  " + contra)
+
+
+
 @app.route('/home/complementarias', methods=['GET','POST'])
 def Complementarias():
 	if request.method == 'GET':
@@ -211,7 +283,7 @@ def Complementarias():
 		else:
 			return redirect(url_for('Complementarias'))
 @app.route('/home/obligatorias', methods=['GET','POST'])
-def Obligatiorias():
+def Obligatorias():
 	if request.method == 'GET':
 		if 'nombre' in session:
 				return render_template("obligatorias.html")

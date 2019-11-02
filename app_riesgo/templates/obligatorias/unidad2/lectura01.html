@@ -1,35 +1,35 @@
 <html>
 	<head>
-		<title>Unidad 2 Lectura 1 - AQUÍ VA EL TÍTULO</title>
+		<title>Unidad 2 Lectura 1 - Wolfgang Amadeus Mozart</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
-		<link rel="stylesheet" href="../../../css/styles.css">
-		<link rel="stylesheet" href="../../../css/lecturas.css">
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" type="text/css">
+	    <link rel="stylesheet" href="{{ url_for('static', filename='css/lecturas.css') }}" type="text/css">
 	</head>
 	<body>
-		<a href="../../home.html">
-			<div id="back">
-				<img src="../../../img/home-button.png">
-			</div>
-		</a>
-		<div id="salir">
+		<button id="menuO" class="izq side" type="submit" name="menuO_btn">
+			<img src="{{ url_for('static', filename='img/left-arrow.png') }}">
+		</button>
+		
+		<button id="salir" class="der side" type="submit" name="salir_btn" >
 			Salir
-		</div>
+		</button>
+
 		<div id="sidenav">
 			<div>
 				<p>Unidad 2</p>
 				<b class="active">Lectura 1</b>
-				<a href="lectura02.html">Lectura 2</a>
-				<a href="lectura03.html">Lectura 3</a>
+				<button id="lectura2" class="link" name="lecturaO2.2_btn">Lectura 2</button>
+				<button id="lectura3" class="link" name="lecturaO2.3_btn">Lectura 3</button>
 			</div>
 		</div>
 
 		<div class="main">
 			<h1>Unidad 2 Lectura 1</h1>
 			<div id="title">
-				<h2>AQUÍ VA EL TÍTULO</h2>
+				<h2>Wolfgang Amadeus Mozart</h2>
 				<div id="act-button" class="button">
-						<button type="button">
+						<button type="button" class="boton">
 							<a href="#actividad">
 								Ir a la actividad
 							</a>
@@ -38,22 +38,23 @@
 				</div>
 			</div>
 			<div class="text">
-				
+				<p>January 27, 1756 - December 05, 1791</p>
+				<p>Wolfgang Amadeus Mozart was born in Salzburg, Austria, where his father Leopold was a violinist and composer. Wolfgang (or Wolferl, as his family called him) was a child prodigy. He composed his first piece of music at age five; he had his first piece published when he was seven; and he wrote his first opera when he was twelve. By the time Wolfgang was 6, he was an excellent pianist and violinist. He and his sister Maria Anna (known as Nannerl) traveled all over Europe performing for royalty.</p>
+				<p>When he grew up, Mozart moved to Vienna, and tried to earn a living as a pianist and composer. But he had a lot of trouble handling the fact that he was no longer a child prodigy. Mozart was still a musical genius, but after he stopped being a cute kid, people stopped making a big fuss over him. Back then, musicians were treated like servants, but Mozart did not, and could not think of himself as a servant.</p>
+				<p>Mozart was only 35 when he died. During his short life, he composed in all different musical forms, including operas, symphonies, concertos, masses, and chamber music. Today, he is still considered a genius!</p>				
 			</div>
 
 			<div id="actividad">
 				<div class="button">
-					<button type="button">
-						<a href="#">
-							Terminar y calificar
-						</a>
+					<button id="calificar" type="button" class="boton">
+						Terminar y calificar
 					</button>
 				</div>
 			</div>
 		</div>
 
 		<div id="logo">
-			<img src="../../img/logo.png">
+			<img src="{{ url_for('static', filename='img/logo.png') }}">
 		</div>
 	</body>
 </html>

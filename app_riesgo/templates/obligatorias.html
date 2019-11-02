@@ -9,36 +9,34 @@
 	</head>
 	<body>
 
-		<a href="home.html">
-			<div id="back">
-				<img src="{{url_for('static', filename='img/home-button.png')}}">
-			</div>
-		</a>
-		<div id="salir">
-			<form class="form_salir" method="POST">
-				<button type="submit" name="salir_button">Salir</button>
-			</form>
-		</div>
+		<button id="home" class="izq side" type="submit" name="home_btn">
+			<img src="{{ url_for('static', filename='img/home-button.png') }}">
+		</button>
+		
+		<button id="salir" class="der side" type="submit" name="salir_btn" >
+			Salir
+		</button>
 		
 		<h1>Lecturas obligatorias</h1>
 
 		<div class="container">
 			<div class="menu" class="grid-template-column">
 				<p>Unidad 1</p>
-				<a href="obligatorias/unidad1/lectura01.html">Lectura 1</a>
-				<a href="obligatorias/unidad1/lectura02.html">Lectura 2</a>
-				<a href="obligatorias/unidad1/lectura03.html">Lectura 3</a>
+				<button id="lectura1" class="link" name="lecturaO1.1_btn">Lectura 1</button>
+				<button id="lectura2" class="link" name="lecturaCO1.2_btn">Lectura 2</button>
+				<button id="lectura3" class="link" name="lecturaCO1.3_btn">Lectura 3</button>
 			</div>
 
 			<div class="menu" class="grid-template-column">
 				<p>Unidad 2</p>
-				<a href="obligatorias/unidad2/lectura01.html">Lectura 1</a>
-				<a href="obligatorias/unidad2/lectura02.html">Lectura 2</a>
-				<a href="obligatorias/unidad2/lectura03.html">Lectura 3</a>
+				<button id="lectura1" class="link" name="lecturaO2.1_btn">Lectura 1</button>
+				<button id="lectura2" class="link" name="lecturaCO2.2_btn">Lectura 2</button>
+				<button id="lectura3" class="link" name="lecturaCO2.3_btn">Lectura 3</button>
 			</div>
 		</div>
+
 		<div id="logo">
-			<img src="{{url_for('static', filename='img/logo.png')}}">
+			<img src="{{ url_for('static', filename='img/logo.png') }}">
 		</div>
 	</body>
 

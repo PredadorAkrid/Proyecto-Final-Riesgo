@@ -1,0 +1,81 @@
+<html>
+
+	<head> 
+		<title>Calificaciones</title>
+
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" type="text/css">
+	    <link rel="stylesheet" href="{{ url_for('static', filename='css/calificaciones.css') }}" type="text/css">
+	
+	</head>
+	<body>
+		<button id="home" class="izq side" type="submit" name="home_btn">
+			<img src="{{ url_for('static', filename='img/home-button.png') }}">
+		</button>
+
+		<button id="salir" class="der side" type="submit" name="salir_btn" >
+			Salir
+		</button>
+
+		<h1>Calificaciones</h1>
+
+		<div class="container">
+			<table id="calificaciones" class="text">
+				<tr>
+					<th class="blank">&nbsp;</th>
+					<th colspan="6">unidad 1</th>
+					<th colspan="6">unidad 2</th>
+				</tr>
+				<tr>
+					<th class="blank">&nbsp;</th>
+					<th>L1</th>
+					<th>L2</th>
+					<th>L3</th>
+					<th>L4</th>
+					<th>L5</th>
+					<th>L6</th>
+					<th>L1</th>
+					<th>L2</th>
+					<th>L3</th>
+					<th>L4</th>
+					<th>L5</th>
+					<th>L6</th>
+				</tr>
+				<tr>
+					<td>usuario 1</td>
+					<td>10</td>
+					<td>10</td>
+					<td>10</td>
+					<td>10</td>
+					<td>10</td>
+					<td>10</td>
+					<td>10</td>
+					<td>10</td>
+					<td>10</td>
+					<td>10</td>
+					<td>10</td>
+					<td>10</td>
+				</tr>
+				<tr>
+					<td>usuario 2</td>
+					<td>10</td>
+					<td>10</td>
+					<td>10</td>
+					<td>10</td>
+					<td>10</td>
+					<td>10</td>
+					<td>10</td>
+					<td>10</td>
+					<td>10</td>
+					<td>10</td>
+					<td>10</td>
+					<td>10</td>
+				</tr>
+			</table>
+		</div>
+		
+		<div id="logo">
+			<img src="{{ url_for('static', filename='img/logo.png') }}">
+		</div>
+	</body>
+
+</html>

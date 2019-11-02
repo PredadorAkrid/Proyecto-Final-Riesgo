@@ -9,47 +9,30 @@
 	</head>
 	<body>
 
-		<a href="home.html">
-			<div id="back">
-				<img src="{{url_for('static', filename='img/home-button.png')}}">
-			</div>
-		</a>
-		<div id="salir">
-			<form class="form_salir" method="POST">
-				<button type="submit" name="salir_button">Salir</button>
-			</form>
-		</div>	
+		<button id="home" class="izq side" type="submit" name="home_btn">
+			<img src="{{ url_for('static', filename='img/home-button.png') }}">
+		</button>
+		
+		<button id="salir" class="der side" type="submit" name="salir_btn" >
+			Salir
+		</button>
 		
 		<h1>Lecturas complementarias</h1>
 
 		<div class="container">
 			<div class="menu" class="grid-template-column">
-				<form class="form_lectura_01" method="POST">
-					<button type="submit" name="lectura_01_button">Lectura 01</button>
-				</form>
-				<!-- 
-				<a href="complementarias/lectura01.html">Lectura 1</a>
-				-->
-				<form class="form_lectura_02" method="POST">
-					<button type="submit" name="lectura_02_button">Lectura 02</button>
-				</form>
-				<!--
-				<a href="complementarias/lectura02.html">Lectura 2</a>
-				-->
-				<form class="form_lectura_03" method="POST">
-					<button type="submit" name="lectura_03_button">Lectura 03</button>
-				</form>
-				<!--
-				<a href="complementarias/lectura03.html">Lectura 3</a>
-				-->
+				<button id="lectura1" class="link" name="lecturaC1_btn">Lectura 1</button>
+				<button id="lectura2" class="link" name="lecturaC2_btn">Lectura 2</button>
+				<button id="lectura3" class="link" name="lecturaC3_btn">Lectura 3</button>
 			</div>
 			
 			<div class="grid-template-column text">
 				Estas lecturas no son tomadas en cuenta para tu desempeño, recomendamos las leas para reforzar tus conocimientos.
 			</div>
 		</div>
+		
 		<div id="logo">
-			<img src="{{url_for('static', filename='img/logo.png')}}">
+			<img src="{{ url_for('static', filename='img/logo.png') }}">
 		</div>
 	</body>
 

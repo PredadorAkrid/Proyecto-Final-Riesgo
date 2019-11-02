@@ -1,0 +1,35 @@
+body{
+    text-align: center;
+}
+
+h1 {
+    color: var(--amarillo);
+    font-weight: normal;
+    font-size: 7.8vw;
+    margin-bottom: 3.5vh;
+}
+
+.button{
+    margin-top: 14vh;
+}
+
+#codigounirse{
+    border: 1px solid var(--gris-claro);
+    width: 30vw;
+    font-size: 70px;
+    font-family: 'Report';
+    text-align: center;
+    height: 4.8vw;
+    margin-top: 14vh;
+    color: var(--gris-oscuro);
+}
+
+#codigounirse::placeholder{
+    color: var(--gris-claro);
+}
+
+#codigo{
+    font-size: 7vw;
+    color: var(--gris-oscuro);
+    margin-top: 14vh;
+}

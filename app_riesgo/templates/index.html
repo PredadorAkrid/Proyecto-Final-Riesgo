@@ -3,8 +3,8 @@
 <head>
 	<title>Index</title>
 	
-	<link rel="stylesheet"  href="{{ url_for('static', filename='css/styles.css') }}">
-	<link rel="stylesheet" type="text/css"  href="{{ url_for('static', filename='css/index.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" type="text/css">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" type="text/css">
 
 </head>
 <body>
@@ -18,19 +18,13 @@
 				<div class="text1">Esta aplicación es una herramienta complementaria a tu curso de inglés</div>
 
 				<div class="text2">¿Aún no tienes cuenta?</div>
-
-				<div class="button" >
-					<form class="form_register" method="POST">
-						<button type="submit" name="register_button">Regístrate</button>
-					</form>
-					<!--
-					<button type="button">
-						<a href="registro.html">
-							Regístrate
-						</a>
+				<form name="register_form" method="POST">
+				<div class="button">
+					<button class="boton" type="submit" name="register_button">
+						Regístrate
 					</button>
-					-->
 				</div>
+				</form>
 		</div>
 
 		<div class="rightside grid-template-column">
@@ -44,16 +38,14 @@
 				</div>
 
 				<div class="button">
-					
-					<button type="submit" name="login_button">Iniciar sesión</button>
-
+					<button class="boton" type="submit" name="login_button">Iniciar sesión</button>
 				</div>
-
 			</form>
 
 		</div>
+
 		<div id="logo">
-			<img src="{{url_for('static', filename='img/logo.png')}}">
+			<img src="{{ url_for('static', filename='img/logo.png') }}">
 		</div>
 	</div>
 

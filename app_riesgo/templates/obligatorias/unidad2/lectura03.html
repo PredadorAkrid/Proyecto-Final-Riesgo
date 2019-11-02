@@ -1,0 +1,62 @@
+<html>
+	<head>
+		<title>Unidad 2 Lectura 3 - Day of the Dead</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" type="text/css">
+	    <link rel="stylesheet" href="{{ url_for('static', filename='css/lecturas.css') }}" type="text/css">
+	</head>
+	<body>
+		<button id="menuO" class="izq side" type="submit" name="menuO_btn">
+			<img src="{{ url_for('static', filename='img/left-arrow.png') }}">
+		</button>
+		
+		<button id="salir" class="der side" type="submit" name="salir_btn" >
+			Salir
+		</button>
+
+		<div id="sidenav">
+			<div>
+				<p>Unidad 2</p>
+				<button id="lectura1" class="link" name="lecturaO2.1_btn">Lectura 1</button>
+				<button id="lectura2" class="link" name="lecturaO2.2_btn">Lectura 2</button>
+				<b class="active">Lectura 3</b>
+			</div>
+		</div>
+
+		<div class="main">
+			<h1>Unidad 2 Lectura 3</h1>
+			<div id="title">
+				<h2>Day of the Dead</h2>
+				<div id="act-button" class="button">
+						<button type="button" class="boton">
+							<a href="#actividad">
+								Ir a la actividad
+							</a>
+						</button>
+
+				</div>
+			</div>
+			<div class="text">
+				<p>Day of the Dead combines the ancient Aztec custom of celebrating ancestors with All Souls' Day, a holiday that Spanish invaders brought to Mexico starting in the early 1500s.</p>
+				<p>The holiday, which is celebrated mostly in Mexico on November 1 and 2, is like a family reunion—except dead ancestors are the guests of honor. Day of the Dead is a joyful time that helps people remember the deceased and celebrate their memory.</p>
+				<p>First, people set up a candlelit altar in their homes so spirits can find their way back to their relatives. The altar also offers some of the favorite foods of the deceased—just in case they get hungry. Items that were important to the ancestors when they were alive, such as a favorite book or musical instrument, are placed on the altar as well.</p>
+				<p>Then it's off to the graveyard for a big party. Families bring a huge feast to eat while they clean tombstones, sing songs, and talk to their ancestors. Parents might even introduce a baby to a grandparent who died before the baby was born.</p>
+				<p>And don't forget the skeletons. During Day of the Dead, life-size papier-mâché skeletons and miniature plastic or clay skeletons are everywhere. Why? Mexicans honor their ancestors on Day of the Dead, but they're also reminding themselves that death is just a part of life. Hanging out with skeletons reminds people that one day they will be skeletons—but not for a very long time!</p>
+				<p>The skeletons are posed doing all sorts of wacky things, such as playing guitar, taking a bath, or making tortillas. Apparently people aren't the only ones who get to have fun on Day of the Dead!</p>		
+			</div>
+
+			<div id="actividad">
+				<div class="button">
+					<button id="calificar" type="button" class="boton">
+						Terminar y calificar
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<div id="logo">
+			<img src="{{ url_for('static', filename='img/logo.png') }}">
+		</div>
+	</body>
+</html>

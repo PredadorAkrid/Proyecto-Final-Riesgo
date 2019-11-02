@@ -1,0 +1,51 @@
+html{
+	background-image: url("../img/registro-bg.png");
+	height: 100%;
+	width: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	text-align: center;
+
+}
+
+h1{
+	text-align: center;
+	font-weight: normal;
+	color: var(--amarillo);
+	font-size: 7.8vw;
+	margin: 0px;
+	letter-spacing: 0.022em;
+	margin-top: 9.2vh;
+	margin-bottom: 6.4vh;
+
+}
+
+#registro{
+	text-align: center;
+	width: 34.2vw;
+	display: inline;
+}
+
+.form_input1, .form_input2, .form_input3{
+	border: none;
+}
+
+.form_input1, .form_input2, .form_input3{
+	margin-bottom: 6.4vh;
+}
+#usuario, #contraseña, #contraseña_conf{
+	font-family: Report;
+	border: 1px solid var(--gris-claro);
+	background-color: white;
+	color: black;
+	font-size: 3.3vw;
+	width: 34.2vw;
+	height: 8.5vh;
+	padding-left: .5em;
+}
+
+#usuario::placeholder, #contraseña::placeholder, #contraseña_conf::placeholder{
+	color: var(--gris-claro);
+}
+

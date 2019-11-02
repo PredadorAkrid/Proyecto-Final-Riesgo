@@ -1,0 +1,65 @@
+<html>
+	<head>
+		<title>Unidad 1 Lectura 2 - Garden Facts</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" type="text/css">
+	    <link rel="stylesheet" href="{{ url_for('static', filename='css/lecturas.css') }}" type="text/css">
+	</head>
+	<body>
+		<button id="menuO" class="izq side" type="submit" name="menuO_btn">
+			<img src="{{ url_for('static', filename='img/left-arrow.png') }}">
+		</button>
+		
+		<button id="salir" class="der side" type="submit" name="salir_btn" >
+			Salir
+		</button>
+
+		<div id="sidenav">
+			<div>
+				<p>Unidad 1</p>
+				<button id="lectura1" class="link" name="lecturaO1.1_btn">Lectura 1</button>
+				<b class="active">Lectura 2</b>
+				<button id="lectura3" class="link" name="lecturaCO1.3_btn">Lectura 3</button>
+			</div>
+		</div>
+
+		<div class="main">
+			<h1>Unidad 1 Lectura 2</h1>
+			<div id="title">
+				<h2>Garden Facts</h2>
+				<div id="act-button" class="button" class="boton">
+						<button type="button">
+							<a href="#actividad">
+								Ir a la actividad
+							</a>
+						</button>
+
+				</div>
+			</div>
+			<div class="text">
+				<p>There are many different types of gardens. Some people create flower gardens, others plant gardens that yield food. Other people create gardens that attract butterflies, and others create gardens that display plants and artwork from a specific part of the world such as in a Japanese garden.</p>
+			<p>Insects are very important to a garden. They help to transfer the pollen from plant to plant.
+			Sometimes, however, insects can be harmful to gardens because they eat the leaves, fruit, flowers or roots. Farmers spend a lot of money on insecticides to kill these harmful insects.</p>
+			<p>Bees are helpful to a garden. They love flowers that close at night. This is the reason why bees are only buzzing around during the daytime.
+			</p><p> Bees are also attracted to the flowers that are bright in color and have a strong fragrance. Because bees help pollinate flowers and plants, they are responsible for the existence of many flowers. Without bees, over 100,000 plant species would cease to exist.</p>
+			<p>Some insects even tell us something about the weather. When bees feel the rise in humidity, they will return to their hives to avoid the coming rain.</p>
+			<p>Earthworms are very important to any garden. They work hard at keeping our soil clean by pulling down organic material and recycling it into fresh nutrient filled soil.</p>
+			<p>Sunlight is very important to any garden. Sunlight helps the plants grow. Some flowers cannot survive in direct sunlight because the heat is too intense and actually burns them.</p>
+			<p>Water is also a very important part of any garden. Most gardens need to be watered frequently in order for the vegetables and flowers to grow. </p>
+			</div>
+
+			<div id="actividad">
+				<div class="button">
+					<button id="calificar" type="button" class="boton">
+						Terminar y calificar
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<div id="logo">
+			<img src="{{ url_for('static', filename='img/logo.png') }}">
+		</div>
+	</body>
+</html>

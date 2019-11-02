@@ -4,26 +4,21 @@
 
 	<meta charset="utf-8"/>
 	<title>Registro</title>
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles-register.css') }}">
-	<link href="https://fonts.googleapis.com/css?family=Comfortaa|Varela+Round&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" type="text/css">
+	    <link rel="stylesheet" href="{{ url_for('static', filename='css/registro.css') }}" type="text/css">
 
 </head>
 <body>
 	<div class="container">
 
-		<div class="home_button">
-			<button type="button" class="home_button1">
-				<i class="material-icons" style="font-size: 50px;">home</i>
-			</button>
-		</div>
+		<button id="back" class="izq side" type="submit" name="back-btn">
+			<img src="{{ url_for('static', filename='img/left-arrow.png') }}">
+		</button>
 
-		<div class="register">
-			<h1 class="register_1">Registro</h1>
-		</div>
+		<h1>Registro</h1>
 		
 
-		<form class="form_register" method="POST">
+		<form id="registro">
 			
 			<div class="form_input1">
 				<input type="text" name="usuario" id="usuario" placeholder="Usuario">
@@ -38,10 +33,15 @@
 			</div>
 
 			<div class="register_button">
-				<button type="button" class="register_button1">Registrarte</button>
+				<button type="submit" class="boton">Registrarte</button>
 			</div>
 
 		</form>
+		
+		<div id="logo">
+			<img src="{{ url_for('static', filename='img/logo.png') }}">
+		</div>
+
 	</div>
 
 </body>
