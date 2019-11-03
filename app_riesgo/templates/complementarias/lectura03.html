@@ -7,18 +7,21 @@
 	    <link rel="stylesheet" href="{{ url_for('static', filename='css/lecturas.css') }}" type="text/css">
 	</head>
 	<body>
-		<button id="menuC" class="izq side" type="submit" name="menuC_btn">
-			<img src="{{ url_for('static', filename='img/left-arrow.png') }}">
-		</button>
-		
-		<button id="salir" class="der side" type="submit" name="salir_btn" >
-			Salir
-		</button>
-
+		<form class="form_complemetarias_home" method="POST">
+			<button id="menuC" class="izq side" type="submit" name="menuC_button">
+				<img src="{{ url_for('static', filename='img/left-arrow.png') }}">
+			</button>
+		</form>
+		<form class="form_salir" method="POST">
+			<button id="salir" class="der side" type="submit" name="salir_button" >
+				Salir
+			</button>
+		</form>
+		<form class="form_lecturas" method="POST">
 		<div id="sidenav" class="comp">
 			<div>
-				<button id="lectura1" class="link" name="lecturaC1_btn">Lectura 1</button>
-				<button id="lectura2" class="link" name="lecturaC2_btn">Lectura 2</button>
+				<button id="lectura1" class="link" name="lecturaC1_button">Lectura 1</button>
+				<button id="lectura2" class="link" name="lecturaC2_button">Lectura 2</button>
 				<b class="active">Lectura 3</b>
 			</div>
 		</div>

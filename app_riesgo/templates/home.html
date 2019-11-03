@@ -8,26 +8,28 @@
 	
 	</head>
 	<body>
-		<button id="salir" class="der side" type="submit" name="salir_btn" >
+		<form name="form_salir" method="POST">
+		<button id="salir" class="der side" type="submit" name="salir_button" >
 			Salir
 		</button>
-
-		<button id="calif" class="small der side" type="submit" name="calif_btn">
-			Calificaciones
-		</button>
-
+		<form name="form_calificaciones" method="POST">
+			<button id="calif" class="small der side" type="submit" name="calificaciones_button">
+				Calificaciones
+			</button>
+		</form>
 		<h1>Bienvenido estudiante</h1>
 
 		<img id="userpic" src="{{ url_for('static', filename='img/estudiante.png') }}">
-
+		<form name="form_lecturas" method="POST">
 		<div class="container">
-			<button id="complementarias">
+			<button id="complementarias" name="complementarias_button">
 				Lecturas complementarias
 			</button>
-			<button id="obligatorias">
+			<button id="obligatorias" name="obligatorias_button">
 				Lecturas obligatorias
 			</button>
 		</div>
+		</form>
 		<div id="logo">
 			<img src="{{ url_for('static', filename='img/logo.png') }}">
 		</div>

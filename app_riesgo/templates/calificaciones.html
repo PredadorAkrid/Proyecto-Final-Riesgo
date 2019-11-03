@@ -8,14 +8,16 @@
 	
 	</head>
 	<body>
-		<button id="home" class="izq side" type="submit" name="home_btn">
-			<img src="{{ url_for('static', filename='img/home-button.png') }}">
-		</button>
-
-		<button id="salir" class="der side" type="submit" name="salir_btn" >
-			Salir
-		</button>
-
+		<form class="form_home" method="POST">
+			<button id="home" class="izq side" type="submit" name="home_button">
+				<img src="{{ url_for('static', filename='img/home-button.png') }}">
+			</button>
+		</form>
+		<form class="form_salir" method="POST">
+			<button id="salir" class="der side" type="submit" name="salir_button" >
+				Salir
+			</button>
+		</form>
 		<h1>Calificaciones</h1>
 
 		<div class="container">

@@ -8,32 +8,34 @@
 	
 	</head>
 	<body>
-
-		<button id="home" class="izq side" type="submit" name="home_btn">
-			<img src="{{ url_for('static', filename='img/home-button.png') }}">
-		</button>
-		
-		<button id="salir" class="der side" type="submit" name="salir_btn" >
-			Salir
-		</button>
+		<form class="form_home" method="POST">
+			<button id="home" class="izq side" type="submit" name="home_button">
+				<img src="{{ url_for('static', filename='img/home-button.png') }}">
+			</button>
+		</form>
+		<form class="form_salir" method="POST">
+			<button id="salir" class="der side" type="submit" name="salir_button" >
+				Salir
+			</button>
+		</form>
 		
 		<h1>Lecturas obligatorias</h1>
-
-		<div class="container">
-			<div class="menu" class="grid-template-column">
-				<p>Unidad 1</p>
-				<button id="lectura1" class="link" name="lecturaO1.1_btn">Lectura 1</button>
-				<button id="lectura2" class="link" name="lecturaCO1.2_btn">Lectura 2</button>
-				<button id="lectura3" class="link" name="lecturaCO1.3_btn">Lectura 3</button>
+		<form class="form_obligatorias" method="POST">
+			<div class="container">
+				<div class="menu" class="grid-template-column">
+					<p>Unidad 1</p>
+					<button id="lectura1" class="link" name="lecturaO1.1_btn">Lectura 1</button>
+					<button id="lectura2" class="link" name="lecturaCO1.2_btn">Lectura 2</button>
+					<button id="lectura3" class="link" name="lecturaCO1.3_btn">Lectura 3</button>
+				</div>
+				<div class="menu" class="grid-template-column">
+					<p>Unidad 2</p>
+					<button id="lectura1" class="link" name="lecturaO2.1_btn">Lectura 1</button>
+					<button id="lectura2" class="link" name="lecturaCO2.2_btn">Lectura 2</button>
+					<button id="lectura3" class="link" name="lecturaCO2.3_btn">Lectura 3</button>
+				</div>
 			</div>
-
-			<div class="menu" class="grid-template-column">
-				<p>Unidad 2</p>
-				<button id="lectura1" class="link" name="lecturaO2.1_btn">Lectura 1</button>
-				<button id="lectura2" class="link" name="lecturaCO2.2_btn">Lectura 2</button>
-				<button id="lectura3" class="link" name="lecturaCO2.3_btn">Lectura 3</button>
-			</div>
-		</div>
+		</form>
 
 		<div id="logo">
 			<img src="{{ url_for('static', filename='img/logo.png') }}">

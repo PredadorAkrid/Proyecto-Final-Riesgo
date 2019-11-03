@@ -83,13 +83,18 @@ security = Security(app, user_datastore)
 ######Declaración de modelos
 
 ######
-
+@app.after_request
+def add_header(response):
+	response.headers.add('Cache-Control', 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0')
+	return response
 #Vista de bienvenida, primera que cargamos
 @app.route("/", methods=['GET', 'POST'])
 def Index():
 	if request.method == 'GET':
+		#print("Index session values: " , session['key_name'])
 		#ésto mata todas las sesiones alv
-		#session.clear()
+		#session.pop('nombre', None)
+		#session.pop('contraseña', None)
 		return render_template("index.html")
 	elif request.method == 'POST':
 		
@@ -161,8 +166,8 @@ def getSession():
 #@app.route('/removesession')
 def removeSession():
 	if 'nombre' in session:
-		session.pop('nombre', None)
-		session.pop('contraseña', None)
+		print("borra la sesión")
+		session.pop('nombre')
 		return redirect(url_for('Index'))
 	return redirect(url_for('Index')) 
 
@@ -201,6 +206,7 @@ def Home():
 				#return redirect(url_for('Index'))
 				return removeSession()
 			else:
+				print("entra a la línea 207")
 				return render_template("home.html")
 		except:
 			return removeSession()
@@ -214,10 +220,11 @@ def Home():
 			return redirect(url_for("Complementarias"));
 		elif 'obligatorias_button' in request.form:
 			print("entra a obligatorias")
-			return render_template("obligatorias.html")
+			return redirect(url_for("Obligatorias"))
+		elif 'calificaciones_button' in request.form:
+			return redirect(url_for("Calificaciones"))
 		else:
-			return "Aquí falta agregar los otros dos botones"
-
+			print("No debería entrar aquí por ningun motivo, línea 222")
 		#print("Sesión inválida")
 		#redirect(url_for('/'))
 
@@ -248,11 +255,11 @@ def HomeTutor():
 			print("entra a obligatorias")
 			return redirect(url_for("Obligatorias"))
 		elif 'grupo_button' in request.form:
-			return redirect(url_for("Grupo"))
+			return redirect(url_for("AltaGrupo"))
 		elif 'calificaciones_button' in request.form:
 			return redirect(url_for('Calificaciones'))
 		else:
-			return "Aquí falta agregar los otros dos botones"
+			print("No debería entrar aquí por ningún motivo linea 257")
 
 		#print("Sesión inválida")
 		#redirect(url_for('/'))
@@ -265,6 +272,47 @@ def HomeTutor():
 
 @app.route('/home/complementarias', methods=['GET','POST'])
 def Complementarias():
+	if 'nombre' in session:
+		if request.method == 'GET':
+			if 'nombre' in session:
+				return render_template("complementarias.html")
+			else:
+				return redirect(url_for('Index'))
+		if request.method == 'POST':
+			if 'salir_button' in request.form:
+				print("entra")
+				return removeSession()
+			elif 'lecturaC1_button' in request.form:
+				return redirect(url_for('Complementaria01'))
+			elif 'lecturaC2_button' in request.form:
+				return redirect(url_for('Complementaria02'))
+			elif 'lecturaC3_button' in request.form:
+				return redirect(url_for('Complementaria03'))
+			elif 'home_button' in request.form:
+				try:
+					nombre =  session['nombre']
+					password = session['password']
+					result_tutores = db_session.query(RegistroTutor).filter(RegistroTutor.usuario == nombre).filter(RegistroTutor.contraseña ==  password).first()
+					result_alumnos = db_session.query(RegistroAlumno).filter(RegistroAlumno.usuario == nombre).filter(RegistroAlumno.contraseña ==  password).first()
+					if(result_tutores == None and result_alumnos == None):
+						print("entra a la línea 298")
+						return removeSession()
+					elif(result_alumnos != None and result_tutores == None):
+						return redirect(url_for('Home'))
+					elif(result_tutores != None and result_alumnos == None):
+						return redirect(url_for('HomeTutor'))
+
+					else:
+						print("Entra a la línea 306")
+						return removeSession()
+				except:
+					return redirect(url_for('Index'))
+			else:
+				print("Entra a la línea 311")
+				return redirect(url_for('Complementarias'))
+	else:
+		return removeSession()	
+	'''
 	if request.method == 'GET':
 		if 'nombre' in session:
 				return render_template("complementarias.html")
@@ -282,8 +330,56 @@ def Complementarias():
 			return redirect(url_for('Complementaria03'))
 		else:
 			return redirect(url_for('Complementarias'))
+	'''
 @app.route('/home/obligatorias', methods=['GET','POST'])
 def Obligatorias():
+	if 'nombre' in session:
+		if request.method == 'GET':
+			if 'nombre' in session:
+				return render_template("obligatorias.html")
+			else:
+				return redirect(url_for('Index'))
+		if request.method == 'POST':
+			if 'salir_button' in request.form:
+				print("entra")
+				return removeSession()
+			elif 'lecturaO1.1_btn' in request.form:
+				return redirect(url_for('ObligatoriaU1L1'))
+			elif 'lecturaCO1.2_btn' in request.form:
+				return redirect(url_for('ObligatoriaU1L2'))
+			elif 'lecturaCO1.3_btn' in request.form:
+				return redirect(url_for('ObligatoriaU1L3'))
+			elif 'lecturaO2.1_btn' in request.form:
+				return redirect(url_for('ObligatoriaU2L1'))
+			elif 'lecturaCO2.2_btn' in request.form:
+				return redirect(url_for('ObligatoriaU2L2'))
+			elif 'lecturaCO2.3_btn' in request.form:
+				return redirect(url_for('ObligatoriaU2L3'))	
+			elif 'home_button' in request.form:
+				try:
+					nombre =  session['nombre']
+					password = session['password']
+					result_tutores = db_session.query(RegistroTutor).filter(RegistroTutor.usuario == nombre).filter(RegistroTutor.contraseña ==  password).first()
+					result_alumnos = db_session.query(RegistroAlumno).filter(RegistroAlumno.usuario == nombre).filter(RegistroAlumno.contraseña ==  password).first()
+					if(result_tutores == None and result_alumnos == None):
+						print("entra a la línea 312")
+						return removeSession()
+					elif(result_alumnos != None and result_tutores == None):
+						return redirect(url_for('Home'))
+					elif(result_tutores != None and result_alumnos == None):
+						return redirect(url_for('HomeTutor'))
+
+					else:
+						print("Entra a la línea 319")
+						return removeSession()
+				except:
+					return redirect(url_for('Index'))
+			else:
+				print("Entra a la línea 377")
+				return redirect(url_for('Obligatorias'))
+	else:
+		return removeSession()	
+	'''
 	if request.method == 'GET':
 		if 'nombre' in session:
 				return render_template("obligatorias.html")
@@ -301,8 +397,186 @@ def Obligatorias():
 			return redirect(url_for('Complementaria03'))
 		else:
 			return redirect(url_for('Obligatorias'))
+'''
 
+@app.route('/home_tutor/calificaciones', methods=['GET','POST'])
+def Calificaciones():
+	if 'nombre' in session:
+		if request.method == 'GET':
+			if 'nombre' in session:
+				return render_template("calificaciones.html")
+			else:
+				return redirect(url_for('Index'))
+		if request.method == 'POST':
+			if 'salir_button' in request.form:
+				print("entra")
+				return removeSession()
+			elif 'home_button' in request.form:
+				try:
+					nombre =  session['nombre']
+					password = session['password']
+					result_tutores = db_session.query(RegistroTutor).filter(RegistroTutor.usuario == nombre).filter(RegistroTutor.contraseña ==  password).first()
+					result_alumnos = db_session.query(RegistroAlumno).filter(RegistroAlumno.usuario == nombre).filter(RegistroAlumno.contraseña ==  password).first()
+					if(result_tutores == None and result_alumnos == None):
+						print("entra a la línea 298")
+						return removeSession()
+					elif(result_alumnos != None and result_tutores == None):
+						return redirect(url_for('Home'))
+					elif(result_tutores != None and result_alumnos == None):
+						return redirect(url_for('HomeTutor'))
 
+					else:
+						print("Entra a la línea 306")
+						return removeSession()
+				except:
+					return redirect(url_for('Index'))
+			else:
+				return redirect(url_for('Calificaciones'))
+	else:
+		return removeSession()
+@app.route('/home_tutor/grupo', methods=['GET','POST'])
+def AltaGrupo():
+	if request.method == 'GET':
+		try:
+			nombreTutor =  session['nombre']
+			password = session['password']
+			result_tutores = db_session.query(RegistroTutor).filter(RegistroTutor.usuario == nombreTutor).filter(RegistroTutor.contraseña ==  password).first()
+			if(result_tutores == None):
+				print("entra a la línea 445")
+				return redirect(url_for('Index'))
+			else:
+				return render_template("grupo-crear.html")
+		except:
+			return redirect(url_for('Index'))
+	if request.method == 'POST':
+		if 'salir_button' in request.form:
+			return removeSession()
+		elif 'home_button' in request.form:
+			return redirect(url_for('HomeTutor'))
+		elif 'generarcodigo_button' in request.form:
+			return "Aquí debe generar el código"
+		else:
+			print("No debería entrar aquí por ningún motivo linea 455")
+@app.route('/home/complementarias/lectura01', methods=['GET', 'POST'])
+def Complementaria01():
+	if request.method == 'GET':
+		if 'nombre' in session:
+			return render_template("complementarias/lectura01.html")
+		else:
+			return redirect(url_for('Index'))
+	if request.method == 'POST':
+		if 'nombre' in session:
+			if 'salir_button' in request.form:
+				print("entra")
+				return removeSession()
+			elif 'menuC_button' in request.form:
+				#try:
+				print("Entra a menu c button en lectura 01")
+				nombre =  session['nombre']
+				password = session['password']
+				result_tutores = db_session.query(RegistroTutor).filter(RegistroTutor.usuario == nombre).filter(RegistroTutor.contraseña ==  password).first()
+				result_alumnos = db_session.query(RegistroAlumno).filter(RegistroAlumno.usuario == nombre).filter(RegistroAlumno.contraseña ==  password).first()
+				if(result_tutores == None and result_alumnos == None):
+					print("entra a la línea 298")
+					return removeSession()
+				elif(result_alumnos != None or result_tutores != None):
+					return redirect(url_for('Complementarias'))
+				#elif(result_tutores != None and result_alumnos == None):
+				#	return redirect(url_for('HomeTutor'))
+				else:
+					print("Entra a la línea 306")
+					return removeSession()
+					#except:
+				#	return redirect(url_for('Index'))
+			elif 'lecturaC2_button' in request.form:
+				return redirect(url_for('Complementaria02'))
+			elif 'lecturaC3_button' in request.form:
+				return redirect(url_for('Complementaria03'))
+			else:
+				print("entra a linea 500")
+				return redirect(url_for('Complementaria01'))
+		else:
+			return removeSession()
+@app.route('/home/complementarias/lectura02', methods=['GET', 'POST'])
+def Complementaria02():
+	if 'nombre' in session:
+		if request.method == 'GET':
+			if 'nombre' in session:
+				return render_template("complementarias/lectura02.html")
+			else:
+				return redirect(url_for('Index'))
+		if request.method == 'POST':
+			if 'salir_button' in request.form:
+				print("entra")
+				return removeSession()
+			elif 'menuC_button' in request.form:
+				#try:
+				nombre =  session['nombre']
+				password = session['password']
+				result_tutores = db_session.query(RegistroTutor).filter(RegistroTutor.usuario == nombre).filter(RegistroTutor.contraseña ==  password).first()
+				result_alumnos = db_session.query(RegistroAlumno).filter(RegistroAlumno.usuario == nombre).filter(RegistroAlumno.contraseña ==  password).first()
+				if(result_tutores == None and result_alumnos == None):
+					print("entra a la línea 298")
+					return removeSession()
+				elif(result_alumnos != None or result_tutores != None):
+					return redirect(url_for('Complementarias'))
+				#elif(result_tutores != None and result_alumnos == None):
+				#	return redirect(url_for('HomeTutor'))
+				else:
+					print("Entra a la línea 306")
+					return removeSession()
+				#except:
+					#return redirect(url_for('Index'))
+			elif 'lecturaC1_button' in request.form:
+				return redirect(url_for('Complementaria01'))
+			elif 'lecturaC3_button' in request.form:
+				return redirect(url_for('Complementaria03'))
+			else:
+				print("entra a linea 500")
+				return redirect(url_for('Complementaria02'))
+	else:
+		print("Entra a la línea 538")
+		return removeSession()
+@app.route('/home/complementarias/lectura03', methods=['GET', 'POST'])
+def Complementaria03():
+	if 'nombre' in session:
+		if request.method == 'GET':
+			if 'nombre' in session:
+				return render_template("complementarias/lectura03.html")
+			else:
+				return redirect(url_for('Index'))
+		if request.method == 'POST':
+			if 'salir_button' in request.form:
+				print("entra")
+				return removeSession()
+			elif 'menuC_button' in request.form:
+				#try:
+				nombre =  session['nombre']
+				password = session['password']
+				result_tutores = db_session.query(RegistroTutor).filter(RegistroTutor.usuario == nombre).filter(RegistroTutor.contraseña ==  password).first()
+				result_alumnos = db_session.query(RegistroAlumno).filter(RegistroAlumno.usuario == nombre).filter(RegistroAlumno.contraseña ==  password).first()
+				if(result_tutores == None and result_alumnos == None):
+					print("entra a la línea 298")
+					return removeSession()
+				elif(result_alumnos != None or result_tutores != None):
+					return redirect(url_for('Complementarias'))
+				#elif(result_tutores != None and result_alumnos == None):
+				#	return redirect(url_for('HomeTutor'))
+				else:
+					print("Entra a la línea 306")
+					return removeSession()
+				#except:
+					#return redirect(url_for('Index'))
+			elif 'lecturaC1_button' in request.form:
+				return redirect(url_for('Complementaria01'))
+			elif 'lecturaC3_button' in request.form:
+				return redirect(url_for('Complementaria03'))
+			else:
+				print("entra a linea 500")
+				return redirect(url_for('Complementaria02'))
+	else:
+		print("Entra a la línea 538")
+		return removeSession()
 
 if __name__ == '__main__':
 	app.run(port = 3000, debug = True)

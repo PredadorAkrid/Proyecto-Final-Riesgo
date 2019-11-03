@@ -8,29 +8,31 @@
 	
 	</head>
 	<body>
+		<form class="form_home" method="POST">
+			<button id="home" class="izq side" type="submit" name="home_button">
+				<img src="{{ url_for('static', filename='img/home-button.png') }}">
+			</button>
+		</form>
+		<form class="form_home" method="POST">
+			<button id="salir" class="der side" type="submit" name="salir_button" >
+				Salir
+			</button>
+		</form>
 
-		<button id="home" class="izq side" type="submit" name="home_btn">
-			<img src="{{ url_for('static', filename='img/home-button.png') }}">
-		</button>
-		
-		<button id="salir" class="der side" type="submit" name="salir_btn" >
-			Salir
-		</button>
-		
 		<h1>Lecturas complementarias</h1>
-
+		<form class="form_complementarias" method="POST">
 		<div class="container">
 			<div class="menu" class="grid-template-column">
-				<button id="lectura1" class="link" name="lecturaC1_btn">Lectura 1</button>
-				<button id="lectura2" class="link" name="lecturaC2_btn">Lectura 2</button>
-				<button id="lectura3" class="link" name="lecturaC3_btn">Lectura 3</button>
+				<button id="lectura1" class="link" name="lecturaC1_button">Lectura 1</button>
+				<button id="lectura2" class="link" name="lecturaC2_button">Lectura 2</button>
+				<button id="lectura3" class="link" name="lecturaC3_button">Lectura 3</button>
 			</div>
 			
 			<div class="grid-template-column text">
 				Estas lecturas no son tomadas en cuenta para tu desempeño, recomendamos las leas para reforzar tus conocimientos.
 			</div>
 		</div>
-		
+		</form>
 		<div id="logo">
 			<img src="{{ url_for('static', filename='img/logo.png') }}">
 		</div>
