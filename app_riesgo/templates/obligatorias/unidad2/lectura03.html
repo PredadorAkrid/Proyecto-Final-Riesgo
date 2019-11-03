@@ -7,22 +7,28 @@
 	    <link rel="stylesheet" href="{{ url_for('static', filename='css/lecturas.css') }}" type="text/css">
 	</head>
 	<body>
-		<button id="menuO" class="izq side" type="submit" name="menuO_btn">
+		<form name="form_obligatorias_menu" method="POST">	
+		<button id="menuO" class="izq side" type="submit" name="menuO_button">
 			<img src="{{ url_for('static', filename='img/left-arrow.png') }}">
 		</button>
-		
-		<button id="salir" class="der side" type="submit" name="salir_btn" >
+		</form>
+		<form name="form_salir" method="POST">	
+
+		<button id="salir" class="der side" type="submit" name="salir_button" >
 			Salir
 		</button>
+		</form>
+		<form name="form_lecturas" method="POST">	
 
 		<div id="sidenav">
 			<div>
 				<p>Unidad 2</p>
-				<button id="lectura1" class="link" name="lecturaO2.1_btn">Lectura 1</button>
-				<button id="lectura2" class="link" name="lecturaO2.2_btn">Lectura 2</button>
+				<button id="lectura1" class="link" name="lecturaO2.1_button">Lectura 1</button>
+				<button id="lectura2" class="link" name="lecturaO2.2_button">Lectura 2</button>
 				<b class="active">Lectura 3</b>
 			</div>
 		</div>
+		</form>
 
 		<div class="main">
 			<h1>Unidad 2 Lectura 3</h1>

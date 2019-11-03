@@ -7,22 +7,26 @@
 	    <link rel="stylesheet" href="{{ url_for('static', filename='css/lecturas.css') }}" type="text/css">
 	</head>
 	<body>
-		<button id="menuO" class="izq side" type="submit" name="menuO_btn">
-			<img src="{{ url_for('static', filename='img/left-arrow.png') }}">
-		</button>
-		
-		<button id="salir" class="der side" type="submit" name="salir_btn" >
-			Salir
-		</button>
-
+		<form name="form_menu" method="POST">
+			<button id="menuO" class="izq side" type="submit" name="menuO_button">
+				<img src="{{ url_for('static', filename='img/left-arrow.png') }}">
+			</button>
+		</form>
+		<form name="form_salir" method="POST">
+			<button id="salir" class="der side" type="submit" name="salir_button" >
+				Salir
+			</button>
+		</form>
+		<form name="form_lecturas" method="POST">
 		<div id="sidenav">
-			<div>
-				<p>Unidad 1</p>
-				<b class="active">Lectura 1</b>
-				<button id="lectura2" class="link" name="lecturaO1.2_btn">Lectura 2</button>
-				<button id="lectura3" class="link" name="lecturaCO1.3_btn">Lectura 3</button>
+				<div>
+					<p>Unidad 1</p>
+					<b class="active">Lectura 1</b>
+					<button id="lectura2" class="link" name="lecturaO1.2_button">Lectura 2</button>
+					<button id="lectura3" class="link" name="lecturaCO1.3_button">Lectura 3</button>
+				</div>
 			</div>
-		</div>
+		</form>
 		<div class="main">
 			<h1>Unidad 1 Lectura 1</h1>
 			<div id="title">
