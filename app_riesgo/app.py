@@ -18,7 +18,7 @@ from database import Base
 from flask_migrate import Migrate
 from database import connection as cur
 #Instalar bcrypt
-
+import json
 
 ##Importar modelos de models
 from models import RegistroAlumno as RegistroAlumno
@@ -816,6 +816,44 @@ def Complementaria03():
 	else:
 		print("Entra a la línea 538")
 		return removeSession()
+@app.route('/calif-lectura', methods=['GET', 'POST'])
+def Califica():
+	if request.method == 'GET':
+		return abort(403)
+	if request.method == 'POST':
+		if 'nombre' in session:
+			print("Entra a enviar datos")
+			
+			data = request.get_data(parse_form_data=False,  as_text=True)
+			parseAux01 = data[0:15]
+			
+			#print(parseAux01)
+			parseAuxCalif = parseAux01[13:15]
+			#print(parseAuxCalif)
+			print("--------------------------------")
+			calificacionFinal = int(parseAuxCalif)
+			parseAux02 = data[16:26]
+			
+			#print(parseAux02)
+			parseLectNum = parseAux02[8:10]
+			#print(parseLectNum)
+			lectFinal = int(parseLectNum)
+			print("--------------------------------")
 
+			parseAux03 = data[27:]
+			#print(parseAux03)
+			parseAuxUnidad = parseAux03[7:9]
+			#print(parseAuxUnidad)
+			unidadFinal = int(parseAuxUnidad)
+			print(calificacionFinal)
+			print(lectFinal)
+			print(unidadFinal)
+
+
+
+			return "hola"
+		else:
+			print("No entra a enviar datos")
+			return removeSession()
 if __name__ == '__main__':
 	app.run(port = 3000, debug = True)

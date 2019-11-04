@@ -2,11 +2,14 @@
 	<head>
 		<title>Unidad 1 Lectura 1 - Superheroes</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" type="text/css">
 	    <link rel="stylesheet" href="{{ url_for('static', filename='css/lecturas.css') }}" type="text/css">
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+		<script src="{{ url_for('static', filename='js/form.js') }}"></script>
+		
 	</head>
 	<body>
+		
 		<form name="form_menu" method="POST">
 			<button id="menuO" class="izq side" type="submit" name="menuO_button">
 				<img src="{{ url_for('static', filename='img/left-arrow.png') }}">
@@ -50,16 +53,17 @@
 			</p>
 			<p>Sometimes superheroes have friends that help them, like Jimmy Olsen in the Superman stories. These friends are called ‘sidekicks’. One of the most famous sidekicks is Robin from ‘Batman and Robin’. Sometimes superheroes group together like Iron Man, Captain America and Thor in the Avengers, or the mutants in the X-Men team.</p>
 			</div>
-
+			<form name="form-calif">
 			<div id="actividad">
 				<div class="button">
-					<button id="calificar" type="button" class="boton">
+					<button id="calificar" type="submit" class="boton" onclick="myfunc()" >
 						Terminar y calificar
 					</button>
 				</div>
 			</div>
+			</form>
 		</div>
-
+		
 		<div id="logo">
 			<img src="{{ url_for('static', filename='img/logo.png') }}">
 		</div>
