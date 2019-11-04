@@ -180,7 +180,7 @@ def Register():
 		if 'back-button' in request.form:
 			return redirect(url_for('Index'))
 		elif 'register_button' in request.form:
-			
+			nombre = request.form
 			usuario = request.form['usuario']
 			password = request.form['contraseña']
 			passwordConf = request.form['contraseña_conf']
