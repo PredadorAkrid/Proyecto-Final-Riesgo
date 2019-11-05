@@ -1,0 +1,124 @@
+h4{
+	margin: 0;
+	text-align: center;
+	font-size: 3vw;
+	margin-top: 15%;
+}
+
+.big{
+	font-size: 2.2vw;
+}
+
+/*
+Tanto flex container como flex item sirven para
+poder crear las cajas  donde guardamos  los elementos  del
+memorama
+*/
+.flex-container {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	justify-content: space-around;
+}
+.flex-item {
+	background: var(--rojo);
+	padding: .5vw;
+	width: 9.5vw;
+	height: 9.5vw;
+	margin-top: 2vh;
+	color: white;
+	font-weight: bold;
+	font-size: 3em;
+	text-align: center;
+	border-radius: 1vw;
+	text-align: center;
+	display: inline-block;
+}
+
+.verde .flex-item{
+	background-color: var(--verde);
+}
+
+.flex-item img{
+	border-radius: 1vw;
+	width: 95%;
+	height: 95%;
+	margin-left: 2.5%;
+	margin-top: 2.5%;
+}
+
+/*
+	.card sirve para dar estilo a los rectangulos que necesitamos
+	para guardar las imagenes y nombres
+*/
+.card{
+  position: relative;
+}
+
+/**
+	La parte de enfrente de la carte donde se encuentra la imagen o
+	la cadena que se desea buscar
+*/
+.card-front{
+	position: absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	height: 100%;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-webkit-transition: -webkit-transform 300ms;
+	transition: transform 300ms;
+	-webkit-transition-timing-function: linear;
+	transition-timing-function: linear;
+}
+
+/**
+	La parte de atras de la tarjeta que siempre va
+	atener los signos de interogación
+*/
+.card-back{
+	left:0px;
+	top: 0px;
+	width:100%;
+	height: 100%;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-webkit-transition: -webkit-transform 300ms;
+	transition: transform 300ms;
+	-webkit-transition-timing-function: linear;
+	transition-timing-function: linear;
+}
+
+/**
+  hace que la imagen y las letras se volteen para mejorar
+  el funcionamiento
+*/
+.card-front {
+	-webkit-transform: rotateY(180deg);
+	transform: rotateY(180deg);
+}
+
+.card-back {
+	-webkit-transform: rotateY(0deg);
+	transform: rotateY(0deg);
+}
+
+.card-back-flip {
+	-webkit-transform: rotateY(-180deg);
+	transform: rotateY(-90deg);
+}
+
+.card-front-flip{
+	-webkit-transform: rotateY(0deg);
+	transform: rotateY(0deg);
+}

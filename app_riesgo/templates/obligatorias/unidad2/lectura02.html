@@ -5,6 +5,8 @@
 		
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" type="text/css">
 	    <link rel="stylesheet" href="{{ url_for('static', filename='css/lecturas.css') }}" type="text/css">
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/memorama.css') }}" type="text/css">
+
 	</head>
 	<body>
 		<form name="form_obligatorias_menu" method="POST">	
@@ -45,10 +47,67 @@
 			</div>
 			<div class="text">
 						<p>When you look out at the stars at night you will start to see that there are billions of stars that are millions of miles apart, and that there are billions of galaxies too, which are clusters of billions of stars. The bigger stars and galaxies you see are the ones that are closer to Earth.</p>
-						<p>How we look into the universe to find all of these wonderful things is called astronomy and the people who study this are called ‘Astronomers’. Astronomers study the universe every day by looking through great big telescopes from the tops of mountains to get the best view. </p>	
+						<p>How we look into the universe to find all of these wonderful things is called astronomy and the people who study this are called ‘Astronomers’. Astronomers study the universe every day by looking through great big telescopes from the tops of mountains to get the best view. </p>
 			</div>
 
 			<div id="actividad">
+				<ul id="contenedor" class="flex-container">
+					<!--Tarjeta 10-->
+					<li id="carta10"  class="flex-item card par-5">
+						<img id="cardBack10" class="card-back" src="{{ url_for('static', filename='img/memorama/back.png') }}" >
+						<h4  id=cardFront10 class="card-front big">Astronomer</h4>
+					</li>
+					<!--Tarjeta 3-->
+					<li id="carta3" class="flex-item card par-2">
+						<img id ="cardFront3" class="card-front" src="{{ url_for('static', filename='img/memorama/galaxia.jpg') }}" alt=""/>
+						<img id="cardBack3" class="card-back" src="{{ url_for('static', filename='img/memorama/back.png') }}" >
+					</li>
+					<!---Tarjeta 1-->
+					<li id="carta1" class="flex-item card par-1">
+						<img id="cardFront" class="card-front" src="{{ url_for('static', filename='img/memorama/estrellas.jpg') }}" alt=""/>
+						<img id ="cardBack" class="card-back" src="{{ url_for('static', filename='img/memorama/back.png') }}" alt=""/>
+					</li>
+					<!--Tarjeta 8-->
+					<li id="carta8"  class="flex-item card par-4">
+						<img id="cardBack8" class="card-back" src="{{ url_for('static', filename='img/memorama/back.png') }}" >
+						<h4 id=cardFront8 class="card-front">Earth</h4>
+					</li>
+					<!--Tarjeta 9-->
+					<li id="carta9" class="flex-item card par-5">
+						<img id ="cardFront9" class="card-front" src="{{ url_for('static', filename='img/memorama/astronomo.jpeg') }}" alt=""/>
+						<img id="cardBack9" class="card-back" src="{{ url_for('static', filename='img/memorama/back.png') }}" >
+					</li>
+				</ul>
+
+				<ul id="contenedor-2" class="flex-container">
+					<!--Tarjeta 7-->
+					<li id="carta7" class="flex-item card par-4">
+						<img id ="cardFront7" class="card-front" src="{{ url_for('static', filename='img/memorama/tierra.jpeg') }}" alt=""/>
+						<img id="cardBack7" class="card-back" src="{{ url_for('static', filename='img/memorama/back.png') }}" >
+					</li>
+					<!--Tarjeta 5-->
+					<li id="carta5" class="flex-item card par-3">
+						<img id ="cardFront5" class="card-front" src="{{ url_for('static', filename='img/memorama/Cielo.jpg') }}" alt=""/>
+						<img id="cardBack5" class="card-back" src="{{ url_for('static', filename='img/memorama/back.png') }}" >
+					</li>
+					<!--Tarjeta 4-->
+					<li id="carta4"  class="flex-item card par-2">
+						<img id="cardBack4" class="card-back" src="{{ url_for('static', filename='img/memorama/back.png') }}" >
+						<h4 id=cardFront4 class="card-front">Galaxy</h4>
+					</li>
+					
+					<!--Tarjeta 6-->
+					<li id="carta6"  class="flex-item card par-3">
+						<img id="cardBack6" class="card-back" src="{{ url_for('static', filename='img/memorama/back.png') }}" >
+						<h4 id=cardFront6 class="card-front">Sky</h4>
+					</li>
+					<!--Tarjeta 2-->
+					<li id=carta2 class="flex-item card par-1">
+						<img id= "cardBack2" class= "card-back" src="{{ url_for('static', filename='img/memorama/back.png') }}" alt=""/>
+						<h4 id=cardFront2 class="card-front">Stars</h4>
+					</li>
+					
+				</ul>
 				<div class="button">
 					<button id="calificar" type="button" class="boton">
 						Terminar y calificar
@@ -56,6 +115,7 @@
 				</div>
 			</div>
 		</div>
+		<script src="{{ url_for('static', filename='js/muestra.js') }}"></script>
 
 		<div id="logo">
 			<img src="{{ url_for('static', filename='img/logo.png') }}">
