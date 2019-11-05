@@ -16,7 +16,7 @@ select *  from grupo;
 insert into grupo_alumno(idGrupo, idAlumno) values ('G2020-1%@L',1);
 select *  from grupo_alumno;
 
-insert into actividad(idGrupo,idAlumno, actividad_01) values ('G2020-1%@L',1,10);
+insert into actividad(idGrupo,idAlumno, actividad_1) values ('G2020-1%@L',1,10);
 select * from actividad;
 
 CREATE TABLE registro_Tutor(
@@ -62,8 +62,9 @@ CREATE TABLE alumno(
 );
 
 CREATE TABLE grupo_alumno(
-	idGrupo varchar(10) UNIQUE REFERENCES grupo(idGrupo), 
-    idAlumno SERIAL  PRIMARY KEY REFERENCES alumno(idAlumno)
+	autoId SERIAL PRIMARY KEY ,
+	idGrupo varchar(10)  REFERENCES grupo(idGrupo), 
+    idAlumno SERIAL UNIQUE REFERENCES alumno(idAlumno)
 );
 
 CREATE TABLE tutor_correo(
@@ -76,16 +77,17 @@ CREATE TABLE tutor_correo(
 
 CREATE TABLE actividad(
 	idGrupo varchar(10) REFERENCES grupo(idGrupo),
-	idAlumno SERIAL REFERENCES alumno(idAlumno),
-	actividad_01 smallint DEFAULT 0,
-	actividad_02 smallint DEFAULT 0,
-	actividad_03 smallint DEFAULT 0,
-	actividad_04 smallint DEFAULT 0,
-	actividad_05 smallint DEFAULT 0,
-	actividad_06 smallint DEFAULT 0,
+	idAlumno SERIAL UNIQUE REFERENCES alumno(idAlumno),
+	actividad_1 smallint DEFAULT 0,
+	actividad_2 smallint DEFAULT 0,
+	actividad_3 smallint DEFAULT 0,
+	actividad_4 smallint DEFAULT 0,
+	actividad_5 smallint DEFAULT 0,
+	actividad_6 smallint DEFAULT 0,
 	promedio decimal DEFAULT 0, 
-	CONSTRAINT actividad_PK PRIMARY KEY (idGrupo, idAlumno)
+	CONSTRAINT actividad_PK PRIMARY KEY (idAlumno)
 );
+
 
 
 
