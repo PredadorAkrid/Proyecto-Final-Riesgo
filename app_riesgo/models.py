@@ -13,6 +13,9 @@ RegistroAlumno = Base.classes.registro_alumno
 Alumno = Base.classes.alumno
 RegistroTutor = Base.classes.registro_tutor
 Tutor = Base.classes.tutor
+Actividad = Base.classes.actividad
+Grupo = Base.classes.grupo
+GrupoAlumno = Base.classes.grupo_alumno
 
 
 

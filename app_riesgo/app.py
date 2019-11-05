@@ -25,8 +25,9 @@ from models import RegistroAlumno as RegistroAlumno
 from models import Alumno as Alumno
 from models import RegistroTutor as RegistroTutor
 from models import Tutor as Tutor
-
-
+from models import Actividad as Actividad
+from models import Grupo as Grupo
+from models import GrupoAlumno as GrupoAlumno
 
 #Configuración del app y de la base
 app = Flask(__name__)
@@ -378,6 +379,7 @@ def Obligatorias():
 				print("Entra a la línea 377")
 				return redirect(url_for('Obligatorias'))
 	else:
+		print("Entra a línea 382")
 		return removeSession()	
 	'''
 	if request.method == 'GET':
@@ -752,8 +754,10 @@ def Complementaria02():
 				#try:
 				nombre =  session['nombre']
 				password = session['password']
+				
 				result_tutores = db_session.query(RegistroTutor).filter(RegistroTutor.usuario == nombre).filter(RegistroTutor.contraseña ==  password).first()
 				result_alumnos = db_session.query(RegistroAlumno).filter(RegistroAlumno.usuario == nombre).filter(RegistroAlumno.contraseña ==  password).first()
+				
 				if(result_tutores == None and result_alumnos == None):
 					print("entra a la línea 298")
 					return removeSession()
@@ -792,8 +796,10 @@ def Complementaria03():
 				#try:
 				nombre =  session['nombre']
 				password = session['password']
+				
 				result_tutores = db_session.query(RegistroTutor).filter(RegistroTutor.usuario == nombre).filter(RegistroTutor.contraseña ==  password).first()
 				result_alumnos = db_session.query(RegistroAlumno).filter(RegistroAlumno.usuario == nombre).filter(RegistroAlumno.contraseña ==  password).first()
+				
 				if(result_tutores == None and result_alumnos == None):
 					print("entra a la línea 298")
 					return removeSession()
@@ -823,35 +829,101 @@ def Califica():
 	if request.method == 'POST':
 		if 'nombre' in session:
 			print("Entra a enviar datos")
+			nombre =  session['nombre']
+			password = session['password']
 			
-			data = request.get_data(parse_form_data=False,  as_text=True)
-			parseAux01 = data[0:15]
+			result_tutores = db_session.query(RegistroTutor).filter(RegistroTutor.usuario == nombre).filter(RegistroTutor.contraseña ==  password).first()
+			p = db_session.query(Alumno).join(RegistroAlumno).filter(Alumno.idregistroalumno == RegistroAlumno.idregistroalumno).filter(RegistroAlumno.usuario == nombre).filter(RegistroAlumno.contraseña ==  password).first()
+			d = db_session.query(GrupoAlumno).join(Alumno).filter(GrupoAlumno.idalumno == Alumno.idalumno).filter(Alumno.idalumno == p.idalumno ).first()
+			#result_alumnos = db_session.query(RegistroAlumno).filter(RegistroAlumno.usuario == nombre).filter(RegistroAlumno.contraseña ==  password).first()
 			
-			#print(parseAux01)
-			parseAuxCalif = parseAux01[13:15]
-			#print(parseAuxCalif)
-			print("--------------------------------")
-			calificacionFinal = int(parseAuxCalif)
-			parseAux02 = data[16:26]
-			
-			#print(parseAux02)
-			parseLectNum = parseAux02[8:10]
-			#print(parseLectNum)
-			lectFinal = int(parseLectNum)
-			print("--------------------------------")
+			if(result_tutores != None):
+				print("Error de acceso 403")
+				return abort(403)
+			elif(p != None):
+				print("Entro a la 841")
+				#print(password)
+				#print(nombre)
+				data = request.get_data(parse_form_data=False,  as_text=True)
+				parseAux01 = data[0:15]
+				
+				#print(parseAux01)
+				parseAuxCalif = parseAux01[13:15]
+				#print(parseAuxCalif)
+				#print("--------------------------------")
+				calificacionFinal = int(parseAuxCalif)
+				parseAux02 = data[16:26]
+				
+				#print(parseAux02)
+				parseLectNum = parseAux02[8:10]
+				#print(parseLectNum)
+				lectFinal = int(parseLectNum)
+				#print("--------------------------------")
 
-			parseAux03 = data[27:]
-			#print(parseAux03)
-			parseAuxUnidad = parseAux03[7:9]
-			#print(parseAuxUnidad)
-			unidadFinal = int(parseAuxUnidad)
-			print(calificacionFinal)
-			print(lectFinal)
-			print(unidadFinal)
+				parseAux03 = data[27:]
+				#print(parseAux03)
+				parseAuxUnidad = parseAux03[7:9]
+				#print(parseAuxUnidad)
+				unidadFinal = int(parseAuxUnidad)
+				#print(calificacionFinal)
+				#print(lectFinal)
+				#print(unidadFinal)
+				#print("El id del registro del alumno es: ")
+				#print(p.idregistroalumno)
+				#print("El id del alumno")
+				#print(p.idalumno)
+				#print("El id del grupo es :")
+				#print(d.idgrupo)
+				#db_session.add()
+				consultaRegistroActividad = db_session.query(Actividad).filter(Actividad.idalumno == d.idalumno).filter(Actividad.idgrupo == d.idgrupo).first()
+				if(consultaRegistroActividad == None):
+					print("aquí insertamos")
+				
+				elif(consultaRegistroActividad != None):
+					print("aquí actualizamos")
+					string_campo = "actividad_" + str(lectFinal)
+					cal = calificacionFinal
+					print(string_campo)
+					print(cal)
+					loc = db_session.query(Actividad).filter(Actividad.idalumno == d.idalumno).filter(Actividad.idgrupo == d.idgrupo).first()
+					if(lectFinal == 1):
+						loc.actividad_1 = cal
+						db_session.commit()
+						print("Éxito al guardar")
+						return redirect(url_for('Home'))
+					elif(lectFinal == 2):
+						loc.actividad_2 = cal
+						db_session.commit()
+						print("Éxito al guardar")
+						return redirect(url_for('Home'))
+					elif(lectFinal == 3):
+						loc.actividad_3 = cal
+						db_session.commit()
+						print("Éxito al guardar")
+						return redirect(url_for('Home'))
+					elif(lectFinal == 4):
+						loc.actividad_4 = cal
+						db_session.commit()
+						print("Éxito al guardar")
+						return redirect(url_for('Home'))
+					elif(lectFinal == 5):
+						loc.actividad_5 = cal
+						db_session.commit()
+						print("Éxito al guardar")
+						return redirect(url_for('Home'))
+					elif(lectFinal == 6):
+						loc.actividad_6 = cal
+						db_session.commit()
+						print("Éxito al guardar")
+						return redirect(url_for('Home'))
+					else:
+						print("Error al guardar")
+						return redirect(url_for('Home'))
 
-
-
-			return "hola"
+			#session.add(Actividad(title = "Power Rangers", genre = action))
+			else:
+				print("Entra a línea 870")
+				return removeSession()
 		else:
 			print("No entra a enviar datos")
 			return removeSession()
