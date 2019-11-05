@@ -88,6 +88,7 @@ CREATE TABLE actividad(
 	CONSTRAINT actividad_PK PRIMARY KEY (idAlumno)
 );
 
-
-
-
+select *  from registro_alumno
+select *  from alumno
+select * from grupo_alumno;
+select *  from actividad;

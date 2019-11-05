@@ -92,6 +92,8 @@ def add_header(response):
 @app.route("/", methods=['GET', 'POST'])
 def Index():
 	if request.method == 'GET':
+		#if 'nombre' in session:
+		#	return removeSession()
 		#print("Index session values: " , session['key_name'])
 		#ésto mata todas las sesiones alv
 		#session.pop('nombre', None)
@@ -513,7 +515,7 @@ def ObligatoriaU1L3():
 				#	return redirect(url_for('Index'))
 			elif 'lecturaO1.1_button' in request.form:
 				return redirect(url_for('ObligatoriaU1L1'))
-			elif 'lecturaCO1.2_btn' in request.form:
+			elif 'lecturaCO1.2_button' in request.form:
 				return redirect(url_for('ObligatoriaU1L2'))
 			else:
 				print("entra a linea 500")
