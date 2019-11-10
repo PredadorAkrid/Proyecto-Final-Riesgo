@@ -1,0 +1,37 @@
+<<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Validación</title>
+  </head>
+
+  <body>
+  <h1> Validación </h1>
+
+  <div id= "1" class="Nombre">
+        Escriba su nombre  <input  id= "save-name" name="ingresatexto" type="text" /> <button onclick="validar_nombre()">confrimar</button>  <br><br>
+  </div>
+
+  <div id= "2" class="NombreUsuario">
+        Escriba su nombre de usuario <input id="name-check" name="ingresatexto" type="text" /><button onclick="validar_usuario()">Confrimar</button> <br><br>
+  </div>
+
+  <div id= "3" class="password">
+    Ingresa tu contraseña: <input name="contrasena" type="password" id= "password-1"  /> <!-- <button onclick="validar_contrasena()">Confrimar</button>  <br><br>-->
+  </div>
+
+  <div id= "4" class="password-check">
+    confirma tu contraseña: <input name="contrasena-2" type="password" id= "password-2" /><button onclick="confirmaContrasena()">Confrimar</button>  <br><br>
+  </div>
+<ul>
+  <li>Nombre tiene que ser menor a 10 digitos y no contener caracteres especiales de la siguiente lista  !#$%&/()=@*+¿?¡  o números</li>
+  <li>Usuario tiene que ser menor a 10 digitos y no contener caracteres especiales de la siguiente lista  !#$%&/()=@*+¿?¡  </li>
+  <li> contraseña Las contraseñas tiene que coincidir tener números y ademas ser mayor a 10 
+</ul>
+
+  </body>
+  <!--Codigo java  Script -->
+  <script src="js/validacion.js"></script>
+
+
+</html>
