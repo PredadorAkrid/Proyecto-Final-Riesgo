@@ -113,9 +113,10 @@ a{
 	padding-top: 30px;
 }
 
-#logo{
+#logo img{
 	position: fixed;
 	height: 121px;
+	width: 173px;
 	left: 20px;
 	bottom: 20px;
 	z-index: 1000;
