@@ -6,6 +6,8 @@
 	<title>Registro</title>
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" type="text/css">
 	    <link rel="stylesheet" href="{{ url_for('static', filename='css/registro.css') }}" type="text/css">
+	    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> 
+	    <script type="text/javascript" src="{{ url_for('static', filename='js/register.js') }}"></script> 
 
 </head>
 <body>
@@ -18,7 +20,7 @@
 		<h1>Registro</h1>
 		
 
-		<form id="registro">
+		<form id="registro" onaction="inicial.html" onsubmit="return false">
 			<div class="form_input0">
 				<input type="text" name="nombre" id="nombre" placeholder="Nombre">
 			</div>
@@ -36,8 +38,12 @@
 			</div>
 
 			<div class="register_button">
-				<button type="submit" class="boton">Registrarte</button>
+				<!-- <input type="submit" class="boton" onclick="myFuncRegister()">Registrarte</button> -->
+				<button id="calificar" type="submit" class="boton" onclick="myFuncRegister()" >
+					Registrar
+				</button>
 			</div>
+			
 
 		</form>
 		

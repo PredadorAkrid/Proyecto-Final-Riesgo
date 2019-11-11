@@ -1,7 +1,7 @@
 function myfunc(){
 $(document).ready(function() {
 
-	$('form').on('submit', function(event) {
+	$('form-calif').on('submit', function(event) {
 		$.ajaxSetup({async:true});
 		$.ajax({
 			//data : {

@@ -1,5 +1,5 @@
 #!/usr/bin/python
- # -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 from flask import Flask
 from flask import render_template
 from flask import request
@@ -84,10 +84,12 @@ security = Security(app, user_datastore)
 ######Declaración de modelos
 
 ######
+
 @app.after_request
 def add_header(response):
 	response.headers.add('Cache-Control', 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0')
 	return response
+
 #Vista de bienvenida, primera que cargamos
 @app.route("/", methods=['GET', 'POST'])
 def Index():
@@ -162,6 +164,12 @@ def Index():
 			#return redirect('Register')
 			return redirect(url_for('Register')) # do something else
 #@app.route('/getsession')
+@app.route("/inicial", methods=['GET', 'POST'])
+def Inicial():
+	if request.method == 'GET':
+		return render_template('inicial.html')
+	elif request.method == 'POST':
+		return redirect(url_for('Index'))
 def getSession():
 	if 'nombre' in session:
 		return session['nombre']
@@ -182,19 +190,43 @@ def Register():
 	elif request.method == 'POST':
 		if 'back-button' in request.form:
 			return redirect(url_for('Index'))
-		elif 'register_button' in request.form:
-			nombre = request.form
-			usuario = request.form['usuario']
-			password = request.form['contraseña']
-			passwordConf = request.form['contraseña_conf']
+		return redirect(url_for(Index))
+			
 		####¿Lo necesitamos?
 		#user_datastore.create_user(
 		#	username = request.form.get('usuario'),
 		#	password = hashpassword(request.form.get('contraseña'))
 		#)
 		#db.session.commit()
-			return redirect(url_for('index'))
-
+		
+@app.route('/user_register', methods=['POST'])
+def RegisterUser():
+	if request.method == 'GET':
+		return abort(403)
+	elif request.method == 'POST':
+		#if 'back-button' in request.form:
+		#	return redirect(url_for('Index'))
+		#else:		
+		print("esta llegando a ésto linea 205")	
+		data = request.get_data(parse_form_data=False,  as_text=True)
+		parsedData = data.split(',')
+		print(parsedData)
+		usuario = parsedData[1]
+		clave = parsedData[2]
+		nuevoAlumno = RegistroAlumno()
+		nuevoAlumno.usuario = usuario
+		nuevoAlumno.contraseña = clave
+		db_session.add(nuevoAlumno)
+		db_session.commit()
+		print("Registro agregado exitosamente")
+		return redirect(url_for('Inicial'))
+		####¿Lo necesitamos?
+		#user_datastore.create_user(
+		#	username = request.form.get('usuario'),
+		#	password = hashpassword(request.form.get('contraseña'))
+		#)
+		#db.session.commit()
+		#return redirect(url_for('index'))
 #Ruta para el home
 @app.route('/home', methods=['GET', 'POST'])
 def Home():
@@ -929,5 +961,7 @@ def Califica():
 		else:
 			print("No entra a enviar datos")
 			return removeSession()
+
+
 if __name__ == '__main__':
 	app.run(port = 3000, debug = True)

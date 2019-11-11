@@ -6,7 +6,7 @@ from sqlalchemy.orm import Session
 #creamos el motor con la url de la base en postgres
 engine = create_engine('postgresql://postgres:1234@localhost/dummy_db', convert_unicode=True, pool_size=10, max_overflow=20)
 connection = engine.connect()
-#Auto mapeamos la base con el ORM, así no tenemos que definir todas las tablas manualmente
+#Automapeamos la base con el ORM, así no tenemos que definir todas las tablas manualmente
 Base = automap_base()
 #Aquí le decimos que haga reflexión de las tablas
 Base.prepare(engine, reflect=True)
@@ -18,9 +18,3 @@ db_session = scoped_session(sessionmaker(autocommit=False,
 Base.query = db_session.query_property()
 
 
-
-#Aqui importamos un modelo (una tabla) de la base de datos que fue automapeada 
-#Tabla01 = Base.classes.dummy_table
-#Probamos si se mapeo correctamente la tabla
-#for clave in db_session.query(Tabla01.clave):
-#    print(clave)

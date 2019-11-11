@@ -8,7 +8,7 @@ from sqlalchemy.orm import relationship, backref
 from sqlalchemy import Boolean, DateTime, Column, Integer, \
                        String, ForeignKey
 from database import Base
-
+#Cargamos los modelos hechos por el automap para exportarlos a app.py
 RegistroAlumno = Base.classes.registro_alumno
 Alumno = Base.classes.alumno
 RegistroTutor = Base.classes.registro_tutor

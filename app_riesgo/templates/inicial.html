@@ -3,11 +3,12 @@
 	<head> 
 		<title>Home - inicial </title>
 
-		<link rel="stylesheet" href="../static/css/styles.css" type="text/css">
-	    <link rel="stylesheet" href="../static/css/poco.css" type="text/css">
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" type="text/css">
+	    <link rel="stylesheet" href="{{ url_for('static', filename='css/poco.css') }}" type="text/css">
 	
 	</head>
 	<body>
+		
 		<button id="salir" class="der side" type="submit" name="salir_btn" >
 			Salir
 		</button>
