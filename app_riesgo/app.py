@@ -107,7 +107,7 @@ def Index():
 					print("contraseña tutor incorrecta")
 					return redirect(url_for('Index'))
 			elif(resultAlumnosAux == None and resultTutoresAux == None):
-				flash("No existe el usuario")
+				flash("Datos incorrectos")
 				print("vacios los dos querys")
 				return redirect(url_for('Index'))
 
@@ -136,7 +136,7 @@ def Index():
 			'''
 		elif 'register_button' in request.form:
 			return redirect(url_for('Register')) # do something else
-
+'''
 @app.route("/inicial", methods=['GET', 'POST'])
 def Inicial():
 	if request.method == 'GET':
@@ -144,9 +144,10 @@ def Inicial():
 		return render_template('inicial.html')
 	elif request.method == 'POST':
 		if 'salir_button' in request.form:
-			return redirect(url_for('Index'))
+			return removeSession()
 		else:
 			print("falta implementar éste caso")
+'''
 #@app.route("/registro-grupo", methods=['GET', 'POST'])
 #def Inicial():
 #	if request.method == 'GET':
@@ -230,7 +231,7 @@ def RegisterUser():
 				print("Ocurrió una excepción")
 				db_session.rollback()
 				raise
-				return redirect(url_for('Inicial'))
+				return removeSession()
 
 		
 #Ruta para el home
@@ -277,11 +278,11 @@ def HomeTutor():
 			result_tutores = db_session.query(RegistroTutor).filter(RegistroTutor.usuario == nombreTutor).filter(RegistroTutor.contraseña ==  password).first()
 			if(result_tutores == None):
 				print("entra a la línea 226")
-				return redirect(url_for('Index'))
+				return removeSession()
 			else:
 				return render_template("home-profe.html")
 		except:
-			return redirect(url_for('Index'))
+			return removeSession()
 	if request.method == 'POST':
 		if 'salir_button' in request.form:
 			return removeSession()
@@ -305,7 +306,7 @@ def Complementarias():
 			if 'nombre' in session:
 				return render_template("complementarias.html")
 			else:
-				return redirect(url_for('Index'))
+				return removeSession()
 		if request.method == 'POST':
 			if 'salir_button' in request.form:
 				print("entra")
@@ -334,7 +335,7 @@ def Complementarias():
 						print("Entra a la línea 306")
 						return removeSession()
 				except:
-					return redirect(url_for('Index'))
+					return removeSession()
 			else:
 				print("Entra a la línea 311")
 				return redirect(url_for('Complementarias'))
@@ -348,7 +349,7 @@ def Obligatorias():
 			if 'nombre' in session:
 				return render_template("obligatorias.html")
 			else:
-				return redirect(url_for('Index'))
+				return removeSession()
 		if request.method == 'POST':
 			if 'salir_button' in request.form:
 				print("entra")
@@ -383,7 +384,7 @@ def Obligatorias():
 						print("Entra a la línea 319")
 						return removeSession()
 				except:
-					return redirect(url_for('Index'))
+					return removeSession()
 			else:
 				print("Entra a la línea 377")
 				return redirect(url_for('Obligatorias'))
@@ -397,7 +398,7 @@ def ObligatoriaU1L1():
 		if 'nombre' in session:
 			return render_template("obligatorias/unidad1/lectura01.html")
 		else:
-			return redirect(url_for('Index'))
+			return removeSession()
 	if request.method == 'POST':
 		if 'nombre' in session:
 			if 'salir_button' in request.form:
@@ -434,7 +435,7 @@ def ObligatoriaU1L2():
 		if 'nombre' in session:
 			return render_template("obligatorias/unidad1/lectura02.html")
 		else:
-			return redirect(url_for('Index'))
+			return removeSession()
 	if request.method == 'POST':
 		if 'nombre' in session:
 			if 'salir_button' in request.form:
@@ -472,7 +473,7 @@ def ObligatoriaU1L3():
 		if 'nombre' in session:
 			return render_template("obligatorias/unidad1/lectura03.html")
 		else:
-			return redirect(url_for('Index'))
+			return removeSession()
 	if request.method == 'POST':
 		if 'nombre' in session:
 			if 'salir_button' in request.form:
@@ -510,7 +511,7 @@ def ObligatoriaU2L1():
 		if 'nombre' in session:
 			return render_template("obligatorias/unidad2/lectura01.html")
 		else:
-			return redirect(url_for('Index'))
+			return removeSession()
 	if request.method == 'POST':
 		if 'nombre' in session:
 			if 'salir_button' in request.form:
@@ -548,7 +549,7 @@ def ObligatoriaU2L2():
 		if 'nombre' in session:
 			return render_template("obligatorias/unidad2/lectura02.html")
 		else:
-			return redirect(url_for('Index'))
+			return removeSession()
 	if request.method == 'POST':
 		if 'nombre' in session:
 			if 'salir_button' in request.form:
@@ -586,7 +587,7 @@ def ObligatoriaU2L3():
 		if 'nombre' in session:
 			return render_template("obligatorias/unidad2/lectura03.html")
 		else:
-			return redirect(url_for('Index'))
+			return removeSession()
 	if request.method == 'POST':
 		if 'nombre' in session:
 			if 'salir_button' in request.form:
@@ -625,7 +626,7 @@ def Calificaciones():
 			if 'nombre' in session:
 				return render_template("calificaciones.html")
 			else:
-				return redirect(url_for('Index'))
+				return removeSession()
 		if request.method == 'POST':
 			if 'salir_button' in request.form:
 				print("entra")
@@ -648,7 +649,7 @@ def Calificaciones():
 						print("Entra a la línea 306")
 						return removeSession()
 				except:
-					return redirect(url_for('Index'))
+					return removeSession()
 			else:
 				return redirect(url_for('Calificaciones'))
 	else:
@@ -662,18 +663,18 @@ def AltaGrupo():
 			result_tutores = db_session.query(RegistroTutor).filter(RegistroTutor.usuario == nombreTutor).filter(RegistroTutor.contraseña ==  password).first()
 			if(result_tutores == None):
 				print("entra a la línea 445")
-				return redirect(url_for('Index'))
+				return removeSession()
 			else:
-				return render_template("grupo-crear.html")
+				return render_template("grupo.html")
 		except:
-			return redirect(url_for('Index'))
+			return removeSession()
 	if request.method == 'POST':
 		if 'salir_button' in request.form:
 			return removeSession()
 		elif 'home_button' in request.form:
 			return redirect(url_for('HomeTutor'))
-		elif 'generarcodigo_button' in request.form:
-			return "Aquí debe generar el código"
+		#elif 'generarcodigo_button' in request.form:
+		#	return "Aquí debe generar el código"
 		else:
 			print("No debería entrar aquí por ningún motivo linea 455")
 @app.route('/home/complementarias/lectura01', methods=['GET', 'POST'])
@@ -682,7 +683,7 @@ def Complementaria01():
 		if 'nombre' in session:
 			return render_template("complementarias/lectura01.html")
 		else:
-			return redirect(url_for('Index'))
+			return removeSession()
 	if request.method == 'POST':
 		if 'nombre' in session:
 			if 'salir_button' in request.form:
@@ -721,7 +722,7 @@ def Complementaria02():
 			if 'nombre' in session:
 				return render_template("complementarias/lectura02.html")
 			else:
-				return redirect(url_for('Index'))
+				return removeSession()
 		if request.method == 'POST':
 			if 'salir_button' in request.form:
 				print("entra")
@@ -762,7 +763,7 @@ def Complementaria03():
 			if 'nombre' in session:
 				return render_template("complementarias/lectura03.html")
 			else:
-				return redirect(url_for('Index'))
+				return removeSession()
 		if request.method == 'POST':
 			if 'salir_button' in request.form:
 				print("entra")
@@ -805,7 +806,7 @@ def Califica():
 			print("Entra a enviar datos")
 			nombre =  session['nombre']
 			password = session['password']
-			
+			print("La contraseña del tutor en calif lectura es: " + password)
 			result_tutores = db_session.query(RegistroTutor).filter(RegistroTutor.usuario == nombre).filter(RegistroTutor.contraseña ==  password).first()
 			p = db_session.query(Alumno).join(RegistroAlumno).filter(Alumno.idregistroalumno == RegistroAlumno.idregistroalumno).filter(RegistroAlumno.usuario == nombre).filter(RegistroAlumno.contraseña ==  password).first()
 			d = db_session.query(GrupoAlumno).join(Alumno).filter(GrupoAlumno.idalumno == Alumno.idalumno).filter(Alumno.idalumno == p.idalumno ).first()

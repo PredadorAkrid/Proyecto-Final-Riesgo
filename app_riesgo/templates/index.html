@@ -17,7 +17,7 @@
     alert(e.keyCode);
     }*/
     document.onkeydown = function(e) {
-            if (e.ctrlKey && (e.keyCode === 67 || e.keyCode === 86 || e.keyCode === 85 || e.keyCode === 117)) {//Alt+c, Alt+v will also be disabled sadly.
+            if (e.ctrlKey && (e.keyCode === 85 || e.keyCode === 117)) {//Alt+c, Alt+v will also be disabled sadly.
                 alert('Acción no permitida ¿estás intentando vulnerar el sitio :(?');
             	return false;
             }else{
@@ -47,6 +47,13 @@
 		</div>
 
 		<div class="rightside grid-template-column">
+			{% with messages = get_flashed_messages() %}
+				{% if messages %}
+				<div class="notification is-danger">
+					{{messages[0]}}
+				</div>
+				{% endif %}
+			{% endwith %}	
 			<form class="form_login" method="POST">
 				<div class="form_input1">
 					<input type="text" name="usuario" id="usuario" placeholder="Usuario">

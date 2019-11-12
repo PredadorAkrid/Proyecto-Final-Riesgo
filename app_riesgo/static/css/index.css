@@ -22,11 +22,6 @@ body{
   	top: 0;
 }
 
-.leftside{
-
-}
-
-
 .rightside{
 	background: rgba(111, 193, 145, 0.4);
 	background-image: url("../img/index-bg.png");
@@ -73,7 +68,7 @@ h1{
 }
 
 .form_input1{
-	padding-top: 32.2vh;
+	padding-top: 7.2vh;
 }
 
 .form_input2{
@@ -94,3 +89,13 @@ h1{
 #usuario::placeholder, #contraseña::placeholder{
 	color: var(--gris-claro);
 }
+
+.notification{
+	background-color: rgba(255,0,0,0.4);
+	font-size: 3vw;
+	margin-top: 25vh;
+	height: 7vh;
+	text-align: center;
+	padding-top: 2vh;
+	width: 34.2vw;
+	margin-left: 7vw;
