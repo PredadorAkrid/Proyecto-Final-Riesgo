@@ -1,7 +1,7 @@
 # Proyecto-Final-Riesgo
 Repositorio para el desarrollo del proyecto final de Riesgo Tecnológico 2020-1
 
-##Integrantes
+## Integrantes
 Lider de proyecto: Amaya López Dulce Fernanda
 Responsable calidad: Sainz Takata Izumi María
 Responsable TI: Navarrete Puebla Alexis
