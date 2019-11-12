@@ -1,0 +1,38 @@
+table{
+  font-family: Report;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table td {
+  border: 1px solid var(--verde);
+  font-size: 3vw;
+}
+
+td{
+  width: 4vw;
+  height: 4vw;
+  text-align: center;
+  color: var(--rojo);
+}
+
+input{
+  border: none;
+  background: white;
+  color: var(--gris-oscuro);
+  text-align: center;
+  width: inherit;
+  height: inherit;
+  font-size: 3vw;
+}
+
+.empty{
+  background-color: var(--verde);
+  border: none;
+}
+.clues{
+  color: #4d4d4d;
+  text-align: left;
+  padding-left: 1.5vw;
+  padding-right: 1.5vw;
+}

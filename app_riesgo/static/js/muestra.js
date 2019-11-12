@@ -13,31 +13,44 @@ cartas.forEach((element)=>{
 
 function EnviarResultado() {
     var numeroPares=guardaPares.length
-    var stringPares = "0"+numeroPares 
+    var stringPares;
+    if(numeroPares == 10){
+      stringPares = "10"
+    }
+    else{
+      stringPares = "0"+numeroPares
+    }
+
     var http = new XMLHttpRequest();
     var url = "/calif-lectura";
     window.alert(stringPares)
-    var params = ("calificacion="+stringPares + "&lectura=" + "01" + "&unidad="+ "01");
+    var params = ("calificacion="+stringPares + "&lectura=" + "02" + "&unidad="+ "01");
     http.open("POST", url, false);
     http.send(params);
     //alert("Obtuviste  " + numeroPares + " de " + "10 pares posibles.");
     window.location.href = "/home/obligatorias"
-    xmlhttp.onreadystatechange = function() {
-        if (xmlhttp.readyState === 4) {
-          var response = JSON.parse(xmlhttp.responseText);
-          if (xmlhttp.status === 200 && response.status === 'OK') {
-            console.log('successful');
-          } else {
-            console.log('failed');
-          }
-        } 
-    }
+    
 }
 
 function EnviarResultado2() {
-  numeroPares=guardaPares.length
-  alert("Obtuviste  " + numeroPares + " de " + "5 pares posibles.");
-  fondo.removeEventListener("click")
+    var numeroPares=guardaPares.length
+    var numParesAux = numeroPares*2
+    var stringPares;
+    if(numParesAux == 10){
+      stringPares = "10"
+    }
+    else{
+      stringPares = "0"+numParesAux
+    }
+    window.alert(stringPares)
+    var http = new XMLHttpRequest();
+    var url = "/calif-lectura";
+    window.alert(stringPares)
+    var params = ("calificacion="+stringPares + "&lectura=" + "05" + "&unidad="+ "02");
+    http.open("POST", url, false);
+    http.send(params);
+    //alert("Obtuviste  " + numeroPares + " de " + "10 pares posibles.");
+    window.location.href = "/home/obligatorias"
 }
 function daVueltas(gira,gira2){
   gira.classList.toggle("card-back-flip")

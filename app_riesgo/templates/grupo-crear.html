@@ -8,6 +8,22 @@
 	
 	</head>
 	<body>
+		<script type='text/javascript'>
+		document.oncontextmenu = function(){return false}
+		</script>
+		<script>
+		    /*function check(e)
+		    {
+		    alert(e.keyCode);
+		    }*/
+		    document.onkeydown = function(e) {
+		            if (e.ctrlKey && (e.keyCode === 67 || e.keyCode === 86 || e.keyCode === 85 || e.keyCode === 117)) {//Alt+c, Alt+v will also be disabled sadly.
+		                alert('Acción no permitida ¿estás intentando vulnerar el sitio :(?');
+		            }
+		            return true;
+
+		        }
+  	  </script>
 		<form class="form_home" method="POST">
 			<button id="home" class="izq side" type="submit" name="home_button">
 				<img src="{{ url_for('static', filename='img/home-button.png') }}">
