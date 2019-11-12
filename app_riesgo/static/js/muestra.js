@@ -12,9 +12,26 @@ cartas.forEach((element)=>{
 })
 
 function EnviarResultado() {
-  numeroPares=guardaPares.length
-  alert("Obtuviste  " + numeroPares + " de " + "10 pares posibles.");
-  fondo.removeEventListener("click")
+    var numeroPares=guardaPares.length
+    var stringPares = "0"+numeroPares 
+    var http = new XMLHttpRequest();
+    var url = "/calif-lectura";
+    window.alert(stringPares)
+    var params = ("calificacion="+stringPares + "&lectura=" + "01" + "&unidad="+ "01");
+    http.open("POST", url, false);
+    http.send(params);
+    //alert("Obtuviste  " + numeroPares + " de " + "10 pares posibles.");
+    window.location.href = "/home/obligatorias"
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState === 4) {
+          var response = JSON.parse(xmlhttp.responseText);
+          if (xmlhttp.status === 200 && response.status === 'OK') {
+            console.log('successful');
+          } else {
+            console.log('failed');
+          }
+        } 
+    }
 }
 
 function EnviarResultado2() {

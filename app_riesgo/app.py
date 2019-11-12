@@ -167,9 +167,19 @@ def Index():
 @app.route("/inicial", methods=['GET', 'POST'])
 def Inicial():
 	if request.method == 'GET':
+		print("Aquí hay que validar si ya está asociado a un grupo")
 		return render_template('inicial.html')
 	elif request.method == 'POST':
-		return redirect(url_for('Index'))
+		if 'salir_button' in request.form:
+			return redirect(url_for('Index'))
+		else:
+			print("falta implementar éste caso")
+#@app.route("/registro-grupo", methods=['GET', 'POST'])
+#def Inicial():
+#	if request.method == 'GET':
+#		return abort(403)
+#	elif request.method == 'POST':
+#		if 
 def getSession():
 	if 'nombre' in session:
 		return session['nombre']
@@ -211,15 +221,51 @@ def RegisterUser():
 		data = request.get_data(parse_form_data=False,  as_text=True)
 		parsedData = data.split(',')
 		print(parsedData)
+		name = parsedData[0]
 		usuario = parsedData[1]
 		clave = parsedData[2]
-		nuevoAlumno = RegistroAlumno()
-		nuevoAlumno.usuario = usuario
-		nuevoAlumno.contraseña = clave
-		db_session.add(nuevoAlumno)
-		db_session.commit()
-		print("Registro agregado exitosamente")
-		return redirect(url_for('Inicial'))
+		grupo = parsedData[3]
+		
+		try:
+    		
+			inscrito = db_session.query(Grupo).filter(Grupo.idgrupo == grupo).first()
+			if(inscrito != None):
+				print("entra a inscrito")
+				
+				nuevoRegistro = RegistroAlumno(usuario=usuario, contraseña=clave)
+				#nuevoRegistro.usuario = usuario
+				#nuevoRegistro.contraseña = clave
+				db_session.add(nuevoRegistro)
+				db_session.commit()
+				
+				idRegistro = db_session.query(RegistroAlumno).filter(RegistroAlumno.usuario == usuario).filter(RegistroAlumno.contraseña ==  clave).first()
+				print("Imprimimos el id del registro del alumno")
+				print(idRegistro.idregistroalumno)
+				idAl = idRegistro.idregistroalumno
+				nuevoAlumno =  Alumno(idregistroalumno= idAl, nombre=name)
+				
+				db_session.add(nuevoAlumno)
+				db_session.commit()
+				idAlumno = db_session.query(Alumno).filter(Alumno.idregistroalumno == idAl).first()
+				print("El id del alumno es " + str(idAlumno.idalumno))
+				grupAlu = GrupoAlumno(idgrupo = grupo , idalumno = idAlumno.idalumno)
+				db_session.add(grupAlu)
+				db_session.commit()
+				
+				return redirect(url_for('Index'))
+
+			else:
+				print("Aquí hay que meter un flush")
+				db_session.rollback()
+				return redirect(url_for('Register'))
+
+		except:	
+				print("Ocurrió una excepción")
+				db_session.rollback()
+				raise
+				return redirect(url_for('Inicial'))
+
+		#print("Registro agregado exitosamente")
 		####¿Lo necesitamos?
 		#user_datastore.create_user(
 		#	username = request.form.get('usuario'),

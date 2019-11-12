@@ -8,27 +8,28 @@
 	
 	</head>
 	<body>
-		
-		<button id="salir" class="der side" type="submit" name="salir_btn" >
+		<form id="form_salir" method="POST">
+		<button id="salir" class="der side" type="submit" name="salir_button" >
 			Salir
 		</button>
+		</form>
 
 		<h1 id="inicial">Unirse a grupo</h1>
 
 		
 		<div class="container">
-			<form>
+			<form onsubmit="return false">
 				<div>
 					<input name="codigounirse" id="codigounirse" placeholder="Código del grupo">
 				</div>
 
 				<div class="button">
-					<button id="unirse" type="submit" class="boton" name="unirse_btn">Unirse</button>
+					<button id="unirse" type="submit" class="boton" name="unirse_btn" onclick="funcRegistroGrupo()">Unirse</button>
 				</div>
 			</form>
 		</div>
 		<div id="logo">
-			<img src="../img/logo.png">
+			<img src="{{ url_for('static', filename='img/logo.png') }}">
 		</div>
 	</body>
 
