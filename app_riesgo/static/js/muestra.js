@@ -12,6 +12,7 @@ cartas.forEach((element)=>{
 })
 
 function EnviarResultado() {
+    alert("Obtuviste  " + numeroPares + " de " + "10 pares posibles.");
     var numeroPares=guardaPares.length
     var stringPares;
     if(numeroPares == 10){
@@ -23,7 +24,6 @@ function EnviarResultado() {
 
     var http = new XMLHttpRequest();
     var url = "/calif-lectura";
-    window.alert(stringPares)
     var params = ("calificacion="+stringPares + "&lectura=" + "02" + "&unidad="+ "01");
     http.open("POST", url, false);
     http.send(params);
@@ -32,6 +32,7 @@ function EnviarResultado() {
 }
 
 function EnviarResultado2() {
+    alert("Obtuviste  " + numeroPares + " de " + "5 pares posibles.");
     var numeroPares=guardaPares.length
     var numParesAux = numeroPares*2
     var stringPares;
@@ -41,10 +42,8 @@ function EnviarResultado2() {
     else{
       stringPares = "0"+numParesAux
     }
-    window.alert(stringPares)
     var http = new XMLHttpRequest();
     var url = "/calif-lectura";
-    window.alert(stringPares)
     var params = ("calificacion="+stringPares + "&lectura=" + "05" + "&unidad="+ "02");
     http.open("POST", url, false);
     http.send(params);

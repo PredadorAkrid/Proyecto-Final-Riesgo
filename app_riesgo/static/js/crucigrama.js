@@ -2,28 +2,29 @@ var palabras1 = ["handheld", "graphics", "console", "release", "joystick"];
 var palabras2 = ["ancestor", "skeleton", "tombstone", "custom", "soul"];
 
 function revisar1(){
-  var calif =  revisar(palabras1);
-  var stringPares;
+    var calif =  revisar(palabras1);
+    var stringPares;
     if(calif == 10){
       stringPares = "10"
     }
     else{
       stringPares = "0"+calif
     }
+    
     var http = new XMLHttpRequest();
     var url = "/calif-lectura";
     window.alert(stringPares)
     var params = ("calificacion="+stringPares + "&lectura=" + "03" + "&unidad="+ "01");
     http.open("POST", url, false);
     http.send(params);
-    //alert("Obtuviste  " + numeroPares + " de " + "10 pares posibles.");
+    
     window.location.href = "/home/obligatorias"
 
 }
 
 function revisar2() {
-  var calif =  revisar(palabras2);
-  var stringPares;
+    var calif =  revisar(palabras2);
+    var stringPares;
     if(calif == 10){
       stringPares = "10"
     }
@@ -36,7 +37,6 @@ function revisar2() {
     var params = ("calificacion="+stringPares + "&lectura=" + "06" + "&unidad="+ "02");
     http.open("POST", url, false);
     http.send(params);
-    //alert("Obtuviste  " + numeroPares + " de " + "10 pares posibles.");
     window.location.href = "/home/obligatorias"
 }
 

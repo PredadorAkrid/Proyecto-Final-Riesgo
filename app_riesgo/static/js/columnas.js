@@ -30,7 +30,7 @@ function juntar(e) {
 			this.style.backgroundColor = colores[contador];
 			this.value = 1;
 			contador = contador + 1;
-			if( contador >= 6 ){
+			if( contador >= 5 ){
 				contador = 0;
 			}
 			if( this.classList.contains(uno.classList.item(0)) ){
@@ -43,5 +43,44 @@ function juntar(e) {
 }
 
 function revisar(){
-	alert("Tuviste bien "+bien+" aciertos de 6.");
+	alert("Tuviste bien "+bien+" aciertos de 5.");
+	var calif = bien
+  	var stringPares;
+    if(calif == 5){
+      stringPares = "10"
+    }
+    else{
+      calif = calif*2
+      stringPares = "0"+calif
+    }
+    var http = new XMLHttpRequest();
+    var url = "/calif-lectura";
+    alert("Tu calificación es: " + stringPares)
+    var params = ("calificacion="+stringPares + "&lectura=" + "01" + "&unidad="+ "01");
+    http.open("POST", url, false);
+    http.send(params);
+    window.location.href = "/home/obligatorias"
+
+
+}
+function revisar1(){
+	alert("Tuviste bien "+bien+" aciertos de 5.");
+	var calif = bien
+  	var stringPares;
+    if(calif == 5){
+      stringPares = "10"
+    }
+    else{
+   	  calif = calif*2
+      stringPares = "0"+calif
+    }
+    var http = new XMLHttpRequest();
+    var url = "/calif-lectura";
+    alert("Tu calificación es: " + stringPares)
+    var params = ("calificacion="+stringPares + "&lectura=" + "04" + "&unidad="+ "02");
+    http.open("POST", url, false);
+    http.send(params);
+    window.location.href = "/home/obligatorias"
+
+
 }
