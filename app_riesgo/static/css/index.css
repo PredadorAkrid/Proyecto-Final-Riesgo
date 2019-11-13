@@ -90,12 +90,16 @@ h1{
 	color: var(--gris-claro);
 }
 
+.form_login{
+	margin-top: 25vh;
+}
+
 .notification{
 	background-color: rgba(255,0,0,0.4);
 	font-size: 3vw;
-	margin-top: 25vh;
 	height: 7vh;
 	text-align: center;
 	padding-top: 2vh;
 	width: 34.2vw;
 	margin-left: 7vw;
+}
