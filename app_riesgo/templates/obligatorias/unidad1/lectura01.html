@@ -4,8 +4,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" type="text/css">
 	    <link rel="stylesheet" href="{{ url_for('static', filename='css/lecturas.css') }}" type="text/css">
-    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-		<script src="{{ url_for('static', filename='js/form.js') }}"></script>
+   	    <link rel="stylesheet" href="{{ url_for('static', filename='css/columnas.css') }}" type="text/css">
+
 		
 	</head>
 	<body>
@@ -70,15 +70,72 @@
 			</div>
 			<form name="form-calif">
 			<div id="actividad">
+				<h2 id="act-title">Relación de columnas</h2>
+				<ul id="contenedor" class="flex-container">
+					
+					<li class="1 flex-item card uno">
+						<h4>Strong</h4>
+					</li>
+
+					<li class="4 flex-item card dos">
+						<img src="{{ url_for('static', filename='img/juegos/1-1/mask.png') }}" alt=""/>
+						
+					</li>
+					
+					<li class="2 flex-item card uno">
+						<h4>Famous</h4>
+					</li>
+
+					<li class="6 flex-item card dos">
+						<img src="{{ url_for('static', filename='img/juegos/1-1/mutant.png') }}" alt=""/>
+					</li>
+					
+				</ul>
+				<ul id="contenedor" class="flex-container">
+					
+					<li class="3 flex-item card uno">
+						<h4>Fast</h4>
+					</li>
+
+					<li class="5 flex-item card dos">
+						<img src="{{ url_for('static', filename='img/juegos/1-1/sidekick.png') }}" alt=""/>
+					</li>
+					<li class="4 flex-item card uno">
+						<h4>Mask</h4>
+					</li>
+
+					<li class="1 flex-item card dos">
+						<img src="{{ url_for('static', filename='img/juegos/1-1/strong.png') }}" alt=""/>
+					</li>
+				</ul>
+				<ul id="contenedor" class="flex-container">
+					
+					<li class="5 flex-item card uno">
+						<h4>Sidekick</h4>
+					</li>
+
+					<li class="3 flex-item card dos">
+						<img src="{{ url_for('static', filename='img/juegos/1-1/fast.png') }}" alt=""/>
+					</li>
+					
+					<li class="6 flex-item card uno">
+						<h4>Mutant</h4>
+					</li>
+
+					<li class="2 flex-item card dos">
+						<img src="{{ url_for('static', filename='img/juegos/1-1/famous.png') }}" alt=""/>
+					</li>
+				</ul>
 				<div class="button">
-					<button id="calificar" type="submit" class="boton"  >
+					<button id="calificar" type="submit" class="boton" onclick="revisar()" >
 						Terminar y calificar
 					</button>
 				</div>
 			</div>
 			</form>
 		</div>
-		
+		<script src="{{ url_for('static', filename='js/columnas.js') }}"></script>
+
 		<div id="logo">
 			<img src="{{ url_for('static', filename='img/logo.png') }}">
 		</div>

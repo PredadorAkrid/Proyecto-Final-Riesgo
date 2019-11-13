@@ -40,10 +40,6 @@ memorama
 	display: inline-block;
 }
 
-.verde .flex-item{
-	background-color: var(--verde);
-}
-
 .flex-item img{
 	border-radius: 1vw;
 	width: 95%;
