@@ -4,7 +4,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" type="text/css">
 	    <link rel="stylesheet" href="{{ url_for('static', filename='css/lecturas.css') }}" type="text/css">
-   	    <link rel="stylesheet" href="{{ url_for('static', filename='css/columnas.css') }}" type="text/css">
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/columnas.css') }}" type="text/css">
 
 		
 	</head>
@@ -60,67 +60,52 @@
 			</div>
 			<div class="text">
 				<p>For thousands of years people have told stories about heroes. Heroes are strong, brave people who help others. Today we can read stories and watch films about superheroes. What is a superhero?</p>
-			<p>Superheroes have special powers which they use to do good things like helping people and fighting crime. They usuallywear special clothes, like a cape. Sometimes they wear a mask so no one knows who they are. Some superheroes use gadgets, like Spiderman’s web shooter.</p>
-			<p>Modern superheroes started as stories in comic books.
-			Superman was one of the first famous superheroes. The first Superman comic was published in 1938. Superman is an alien from the planet Krypton. He can fly and he is super strong. He is super fast and no weapons can hurt him. The only thing that can hurt him is Kryptonite rock from his planet. 
-			</p>
-			<p>In 1941, Wonder Woman was created. She was the first female superhero. Wonder Woman’s story comes from ancient Greek myths. She has some superhuman powers like Superman. She is good at fighting and she has a lots of weapons too like a lasso and magic bracelets.
-			</p>
-			<p>Sometimes superheroes have friends that help them, like Jimmy Olsen in the Superman stories. These friends are called ‘sidekicks’. One of the most famous sidekicks is Robin from ‘Batman and Robin’. Sometimes superheroes group together like Iron Man, Captain America and Thor in the Avengers, or the mutants in the X-Men team.</p>
+				<p>Superheroes have special powers which they use to do good things like helping people and fighting crime. They usuallywear special clothes, like a cape. Sometimes they wear a mask so no one knows who they are. Some superheroes use gadgets, like Spiderman’s web shooter.</p>
+				<p>Modern superheroes started as stories in comic books.
+				Superman was one of the first famous superheroes. The first Superman comic was published in 1938. Superman is an alien from the planet Krypton. He can fly and he is super strong. He is super fast and no weapons can hurt him. The only thing that can hurt him is Kryptonite rock from his planet. 
+				</p>
+				<p>In 1941, Wonder Woman was created. She was the first female superhero. Wonder Woman’s story comes from ancient Greek myths. She has some superhuman powers like Superman. She is good at fighting and she has a lots of weapons too like a lasso and magic bracelets.
+				</p>
+				<p>Sometimes superheroes have friends that help them, like Jimmy Olsen in the Superman stories. These friends are called ‘sidekicks’. One of the most famous sidekicks is Robin from ‘Batman and Robin’. Sometimes superheroes group together like Iron Man, Captain America and Thor in the Avengers, or the mutants in the X-Men team.</p>
 			</div>
 			<form name="form-calif">
 			<div id="actividad">
 				<h2 id="act-title">Relación de columnas</h2>
 				<ul id="contenedor" class="flex-container">
-					
 					<li class="1 flex-item card uno">
 						<h4>Strong</h4>
 					</li>
-
 					<li class="4 flex-item card dos">
 						<img src="{{ url_for('static', filename='img/juegos/1-1/mask.png') }}" alt=""/>
-						
 					</li>
-					
-					
-
-					<li class="6 flex-item card dos">
-						<img src="{{ url_for('static', filename='img/juegos/1-1/mutant.png') }}" alt=""/>
-					</li>
-					
-				</ul>
-				<ul id="contenedor" class="flex-container">
-					
 					<li class="3 flex-item card uno">
 						<h4>Fast</h4>
 					</li>
-
+					<li class="6 flex-item card dos">
+						<img src="{{ url_for('static', filename='img/juegos/1-1/mutant.png') }}" alt=""/>
+					</li>
+				</ul>
+				<ul id="contenedor" class="flex-container">
+					<li class="6 flex-item card uno">
+						<h4>Mutant</h4>
+					</li>
 					<li class="5 flex-item card dos">
 						<img src="{{ url_for('static', filename='img/juegos/1-1/sidekick.png') }}" alt=""/>
 					</li>
 					<li class="4 flex-item card uno">
 						<h4>Mask</h4>
 					</li>
-
 					<li class="1 flex-item card dos">
 						<img src="{{ url_for('static', filename='img/juegos/1-1/strong.png') }}" alt=""/>
 					</li>
 				</ul>
 				<ul id="contenedor" class="flex-container">
-					
 					<li class="5 flex-item card uno">
 						<h4>Sidekick</h4>
 					</li>
-
 					<li class="3 flex-item card dos">
 						<img src="{{ url_for('static', filename='img/juegos/1-1/fast.png') }}" alt=""/>
 					</li>
-					
-					<li class="6 flex-item card uno">
-						<h4>Mutant</h4>
-					</li>
-
-					
 				</ul>
 				<div class="button">
 					<button id="calificar" type="submit" class="boton" onclick="revisar()" >

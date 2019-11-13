@@ -3,9 +3,9 @@
 		<title>Unidad 2 Lectura 1 - Wolfgang Amadeus Mozart</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
-		<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" type="text/css">
-	    <link rel="stylesheet" href="{{ url_for('static', filename='css/lecturas.css') }}" type="text/css">
-		<link rel="stylesheet" href="{{ url_for('static', filename='css/columnas.css') }}" type="text/css">
+		<link rel="stylesheet" href="../../../static/css/styles.css" type="text/css">
+	    <link rel="stylesheet" href="../../../static/css/lecturas.css" type="text/css">
+   	    <link rel="stylesheet" href="../../../static/css/columnas.css" type="text/css">
 
 	</head>
 	<body>
@@ -70,38 +70,32 @@
 			<div id="actividad">
 				<h2 id="act-title">Relación de columnas</h2>
 				<ul id="contenedor" class="flex-container">
-					
 					<li class="1 flex-item card uno">
 						<h4>Pianist</h4>
 					</li>
-
 					<li class="4 flex-item card dos">
 						<img src="{{ url_for('static', filename='img/juegos/2-1/die.png') }}" alt=""/>
-						
 					</li>
-					
 					<li class="2 flex-item card uno">
 						<h4>Royalty</h4>
 					</li>
-
 					<li class="5 flex-item card dos">
 						<img src="{{ url_for('static', filename='img/juegos/2-1/composition.png') }}" alt=""/>
 					</li>
 				</ul>
 				<ul id="contenedor" class="flex-container">
-					
 					<li class="3 flex-item card uno">
 						<h4>Mozart</h4>
 					</li>
-
 					<li class="2 flex-item card dos">
 						<img src="{{ url_for('static', filename='img/juegos/2-1/royalty.png') }}" alt=""/>
 					</li>
 					<li class="4 flex-item card uno">
 						<h4>Die</h4>
 					</li>
-
-					
+					<li class="1 flex-item card dos">
+						<img src="{{ url_for('static', filename='img/juegos/2-1/pianist.png') }}" alt=""/>
+					</li>
 				</ul>
 				<ul id="contenedor" class="flex-container">
 					
@@ -111,12 +105,6 @@
 
 					<li class="3 flex-item card dos">
 						<img src="{{ url_for('static', filename='img/juegos/2-1/mozart.png') }}" alt=""/>
-					</li>
-					
-					
-
-					<li class="1 flex-item card dos">
-						<img src="{{ url_for('static', filename='img/juegos/2-1/pianist.png') }}" alt=""/>
 					</li>
 				</ul>
 				<div class="button">
