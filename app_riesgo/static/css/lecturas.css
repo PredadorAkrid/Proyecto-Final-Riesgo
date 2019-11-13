@@ -93,3 +93,8 @@
 .comp {
 	padding-top: 30vh;
 }
+
+#act-title{
+	color: var(--amarillo);
+	margin-bottom: .5vh;
+}
