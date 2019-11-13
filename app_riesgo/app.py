@@ -117,7 +117,6 @@ def Index():
 """
 def removeSession():
 	if 'nombre' in session:
-		print("borra la sesión")
 		session.pop('nombre')
 		return redirect(url_for('Index'))
 	return redirect(url_for('Index')) 
@@ -163,7 +162,6 @@ def RegisterUser():
 					db_session.add(nuevoRegistro)
 					db_session.commit()
 					idRegistro = db_session.query(RegistroAlumno).filter(RegistroAlumno.usuario == usuario).filter(RegistroAlumno.contraseña == claveCifrada ).first()
-					print(idRegistro.idregistroalumno)
 					idAl = idRegistro.idregistroalumno
 					nuevoAlumno =  Alumno(idregistroalumno= idAl, nombre=name)
 					db_session.add(nuevoAlumno)
@@ -542,7 +540,6 @@ def ObligatoriaU2L3():
 				result_tutores = db_session.query(RegistroTutor).filter(RegistroTutor.usuario == nombre).filter(RegistroTutor.contraseña ==  password).first()
 				result_alumnos = db_session.query(RegistroAlumno).filter(RegistroAlumno.usuario == nombre).filter(RegistroAlumno.contraseña ==  password).first()
 				if(result_tutores == None and result_alumnos == None):
-					print("entra a la línea 298")
 					return removeSession()
 				elif(result_alumnos != None or result_tutores != None):
 					return redirect(url_for('Obligatorias'))
