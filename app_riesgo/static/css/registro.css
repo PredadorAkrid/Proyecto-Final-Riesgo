@@ -16,8 +16,8 @@ h1{
 	font-size: 7.8vw;
 	margin: 0px;
 	letter-spacing: 0.022em;
-	margin-top: 9.2vh;
-	margin-bottom: 6.4vh;
+	margin-top: 4vh;
+	margin-bottom: 4vh;
 
 }
 
@@ -27,14 +27,11 @@ h1{
 	display: inline;
 }
 
-.form_input1, .form_input2, .form_input3{
+.form_input0, .form_input1, .form_input2, .form_input3, .form_input4{
 	border: none;
+	margin-bottom: 4vh;
 }
-
-.form_input1, .form_input2, .form_input3{
-	margin-bottom: 6.4vh;
-}
-#usuario, #contraseña, #contraseña_conf{
+#nombre, #usuario, #contraseña, #contraseña_conf, #grupo{
 	font-family: Report;
 	border: 1px solid var(--gris-claro);
 	background-color: white;
@@ -45,7 +42,6 @@ h1{
 	padding-left: .5em;
 }
 
-#usuario::placeholder, #contraseña::placeholder, #contraseña_conf::placeholder{
+#nombre::placeholder, #usuario::placeholder, #contraseña::placeholder, #contraseña_conf::placeholder, #grupo::placeholder{
 	color: var(--gris-claro);
 }
-

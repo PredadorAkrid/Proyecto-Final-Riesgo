@@ -24,7 +24,6 @@
             	return true;
             }
             
-
         }
     </script>
     	
@@ -47,14 +46,15 @@
 		</div>
 
 		<div class="rightside grid-template-column">
-			{% with messages = get_flashed_messages() %}
-				{% if messages %}
-				<div class="notification is-danger">
-					{{messages[0]}}
-				</div>
-				{% endif %}
-			{% endwith %}	
+				
 			<form class="form_login" method="POST">
+				{% with messages = get_flashed_messages() %}
+					{% if messages %}
+					<div class="notification is-danger">
+						{{messages[0]}}
+					</div>
+					{% endif %}
+				{% endwith %}
 				<div class="form_input1">
 					<input type="text" name="usuario" id="usuario" placeholder="Usuario">
 				</div>
