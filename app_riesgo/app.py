@@ -35,7 +35,7 @@ app.secret_key = "qwerty@%1423" #seed para las sesiones , encripta las sesiones
 
 POSTGRES = {
     'user': 'postgres',
-    'pw': '1234',
+    'pw': '4l3xispassword#',
     'db': 'dummy_db',
     'host': 'localhost',
     'port': '5432',
