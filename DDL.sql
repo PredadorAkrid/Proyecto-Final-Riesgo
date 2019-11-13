@@ -1,23 +1,5 @@
-drop table actividad,  alumno, grupo, grupo_alumno,  registro_tutor, registro_alumno, tutor, tutor_correo;
-insert into registro_tutor (usuario, contraseña) values ('don feliz', 'dbed1d1417a60d4d705689cfb8f6051e25f4e089a8eadcff724b60eef5681bd320a5a462de9e66c73ac650c5d96dda3595da79a8feb69679feafa045e5dc44a96881a2441117dc22b5d9fbb11fed27807c13113221e4d477e7f2336212af5f56');
-insert into registro_alumno (usuario, contraseña) values ('alexis', 'f5fa60d18560eef8cfc41157426c07a6ae0a26476ac8973ca3198c6fa203cb186f5cc257c5b4645acba60e8d2ebf1c29f890b68a260574df513e2cdbadd602a90b0525cee52f21d6133099df3b93945187f7282b9691ff7e2baddb28546ccbfa');
-select *  from registro_alumno;
+drop table if exists actividad,  alumno, grupo, grupo_alumno,  registro_tutor, registro_alumno, tutor, tutor_correo;
 
-insert into alumno(idRegistroAlumno, nombre) values (1,'Alexis');
---insert into alumno(idRegistroAlumno, nombre) values (1,'Juan');
-select *  from alumno;
-
-insert into tutor (idRegistroTutor, nombre, aPaterno, aMaterno, fNacimiento ) values (1, 'Luis', 'Rey', 'Reynosa', '1990-05-20');
-select * from tutor;
-
-insert into grupo(idGrupo,idTutor) values ('G2020-1%@L', 1);
-select *  from grupo;
---insert into grupo(idTutor) values (1);
-insert into grupo_alumno(idGrupo, idAlumno) values ('G2020-1%@L',1);
-select *  from grupo_alumno;
-
-insert into actividad(idGrupo,idAlumno, actividad_1) values ('G2020-1%@L',1,10);
-select * from actividad;
 
 CREATE TABLE registro_Tutor(
 	idRegistroTutor SERIAL,
@@ -86,7 +68,10 @@ CREATE TABLE actividad(
 	actividad_6 smallint DEFAULT 0,
 	CONSTRAINT actividad_PK PRIMARY KEY (idAlumno)
 );
-select *  from registro_alumno
-select *  from alumno
-select * from grupo_alumno;
-select *  from actividad;
+insert into registro_tutor (usuario, contraseña) values ('amaya221', 'dbed1d1417a60d4d705689cfb8f6051e25f4e089a8eadcff724b60eef5681bd320a5a462de9e66c73ac650c5d96dda3595da79a8feb69679feafa045e5dc44a96881a2441117dc22b5d9fbb11fed27807c13113221e4d477e7f2336212af5f56');
+insert into registro_alumno (usuario, contraseña) values ('alexis', 'f5fa60d18560eef8cfc41157426c07a6ae0a26476ac8973ca3198c6fa203cb186f5cc257c5b4645acba60e8d2ebf1c29f890b68a260574df513e2cdbadd602a90b0525cee52f21d6133099df3b93945187f7282b9691ff7e2baddb28546ccbfa');
+insert into alumno(idRegistroAlumno, nombre) values (1,'Alexis');
+insert into tutor (idRegistroTutor, nombre, aPaterno, aMaterno, fNacimiento ) values (1, 'Dulce', 'Amaya', 'Lopez', '1990-05-20');
+insert into grupo(idGrupo,idTutor) values ('G2020-1%@L', 1);
+insert into grupo_alumno(idGrupo, idAlumno) values ('G2020-1%@L',1);
+insert into actividad(idGrupo,idAlumno, actividad_1) values ('G2020-1%@L',1,10);
