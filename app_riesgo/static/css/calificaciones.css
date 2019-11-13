@@ -10,8 +10,9 @@ h1 {
 }
 
 table{
-	width: 100%;
+	width: 70%;
 	text-align: center;
+	margin-left:15%;
 }
 
 table, th, td{
@@ -25,9 +26,6 @@ th{
 	color: var(--gris-claro)
 }
 
-tr{
-	height: 10vh;
-}
 
 tr:nth-child(odd){
 	background-color: #74CEE44D;

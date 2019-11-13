@@ -1,4 +1,4 @@
-#!/usr/bin/python
+ #!/usr/bin/python
 # -*- coding: utf-8 -*-
 from flask import Flask
 from flask import render_template
@@ -624,7 +624,48 @@ def Calificaciones():
 	if 'nombre' in session:
 		if request.method == 'GET':
 			if 'nombre' in session:
-				return render_template("calificaciones.html")
+				nombre =  session['nombre']
+				password = session['password']
+				result_tutores = db_session.query(RegistroTutor).filter(RegistroTutor.usuario == nombre).filter(RegistroTutor.contraseña ==  password).first()
+				result_alumnos = db_session.query(RegistroAlumno).filter(RegistroAlumno.usuario == nombre).filter(RegistroAlumno.contraseña ==  password).first()
+				if(result_tutores != None):
+#p = db_session.query(Alumno).join(RegistroAlumno).filter(Alumno.idregistroalumno == RegistroAlumno.idregistroalumno).filter(RegistroAlumno.usuario == nombre).filter(RegistroAlumno.contraseña ==  password).first()					
+					tutor = db_session.query(Tutor).join(RegistroTutor).filter(Tutor.idregistrotutor == result_tutores.idregistrotutor).filter(RegistroTutor.usuario == nombre).filter(RegistroTutor.contraseña ==  password).first()
+					grupoTutor = db_session.query(Grupo).join(Tutor).filter(Grupo.idtutor == tutor.idtutor).first()
+					result = db_session.query(Actividad).join(Grupo).filter(Actividad.idgrupo == grupoTutor.idgrupo).all()#meter datos del query
+					
+					listRes = []
+					for student in result:
+						alumno = db_session.query(Alumno).join(Actividad).filter(Alumno.idalumno == student.idalumno).first()
+						auxLista = []
+						auxLista.append(alumno.nombre)
+						auxLista.append(student.actividad_1)
+						auxLista.append(student.actividad_2)
+						auxLista.append(student.actividad_3)
+						auxLista.append(student.actividad_4)
+						auxLista.append(student.actividad_5)
+						auxLista.append(student.actividad_6)
+						listRes.append(auxLista)
+					print(listRes)
+					return render_template("calificaciones.html", listRes=listRes)
+				elif(result_alumnos != None):
+					
+					alumno = db_session.query(Alumno).join(RegistroAlumno).filter(Alumno.idregistroalumno == result_alumnos.idregistroalumno).filter(RegistroAlumno.usuario == nombre).filter(RegistroAlumno.contraseña ==  password).first()
+					result = db_session.query(Actividad).join(Alumno).filter(Actividad.idalumno == alumno.idalumno).first()#meter datos del query
+					listRes = []
+					auxLista = []
+					auxLista.append(alumno.nombre)
+					auxLista.append(result.actividad_1)
+					auxLista.append(result.actividad_2)
+					auxLista.append(result.actividad_3)
+					auxLista.append(result.actividad_4)
+					auxLista.append(result.actividad_5)
+					auxLista.append(result.actividad_6)
+					listRes.append(auxLista)
+					return render_template("calificaciones.html", listRes=listRes)
+				else:
+					return removeSession()
+				
 			else:
 				return removeSession()
 		if request.method == 'POST':
@@ -806,15 +847,16 @@ def Califica():
 			print("Entra a enviar datos")
 			nombre =  session['nombre']
 			password = session['password']
-			print("La contraseña del tutor en calif lectura es: " + password)
 			result_tutores = db_session.query(RegistroTutor).filter(RegistroTutor.usuario == nombre).filter(RegistroTutor.contraseña ==  password).first()
-			p = db_session.query(Alumno).join(RegistroAlumno).filter(Alumno.idregistroalumno == RegistroAlumno.idregistroalumno).filter(RegistroAlumno.usuario == nombre).filter(RegistroAlumno.contraseña ==  password).first()
-			d = db_session.query(GrupoAlumno).join(Alumno).filter(GrupoAlumno.idalumno == Alumno.idalumno).filter(Alumno.idalumno == p.idalumno ).first()
-			
+			result_alumnos = db_session.query(RegistroAlumno).filter(RegistroAlumno.usuario == nombre).filter(RegistroAlumno.contraseña ==  password).first()
+
 			if(result_tutores != None):
 				print("Error de acceso 403")
-				return abort(403)
-			elif(p != None):
+				return redirect(url_for('Obligatorias'))
+			elif(result_alumnos != None):
+				p = db_session.query(Alumno).join(RegistroAlumno).filter(Alumno.idregistroalumno == RegistroAlumno.idregistroalumno).filter(RegistroAlumno.usuario == nombre).filter(RegistroAlumno.contraseña ==  password).first()
+				d = db_session.query(GrupoAlumno).join(Alumno).filter(GrupoAlumno.idalumno == Alumno.idalumno).filter(Alumno.idalumno == p.idalumno ).first()
+			
 				print("Entro a la 841")
 				
 				data = request.get_data(parse_form_data=False,  as_text=True)
@@ -850,35 +892,35 @@ def Califica():
 						loc.actividad_1 = cal
 						db_session.commit()
 						print("Éxito al guardar")
-						return redirect(url_for('Home'))
+						return redirect(url_for('Obligatorias'))
 					elif(lectFinal == 2):
 						loc.actividad_2 = cal
 						db_session.commit()
 						print("Éxito al guardar")
-						return redirect(url_for('Home'))
+						return redirect(url_for('Obligatorias'))
 					elif(lectFinal == 3):
 						loc.actividad_3 = cal
 						db_session.commit()
 						print("Éxito al guardar")
-						return redirect(url_for('Home'))
+						return redirect(url_for('Obligatorias'))
 					elif(lectFinal == 4):
 						loc.actividad_4 = cal
 						db_session.commit()
 						print("Éxito al guardar")
-						return redirect(url_for('Home'))
+						return redirect(url_for('Obligatorias'))
 					elif(lectFinal == 5):
 						loc.actividad_5 = cal
 						db_session.commit()
 						print("Éxito al guardar")
-						return redirect(url_for('Home'))
+						return redirect(url_for('Obligatorias'))
 					elif(lectFinal == 6):
 						loc.actividad_6 = cal
 						db_session.commit()
 						print("Éxito al guardar")
-						return redirect(url_for('Home'))
+						return redirect(url_for('Obligatorias'))
 					else:
 						print("Error al guardar")
-						return redirect(url_for('Home'))
+						return redirect(url_for('Obligatorias'))
 			else:
 				print("Entra a línea 870")
 				return removeSession()
