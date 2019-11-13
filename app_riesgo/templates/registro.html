@@ -15,12 +15,9 @@
 		document.oncontextmenu = function(){return false}
 		</script>
 		<script>
-		    /*function check(e)
-		    {
-		    alert(e.keyCode);
-		    }*/
+		  
 		    document.onkeydown = function(e) {
-		            if (e.ctrlKey && (e.keyCode === 85 || e.keyCode === 117)) {//Alt+c, Alt+v will also be disabled sadly.
+		            if (e.ctrlKey && (e.keyCode === 85 || e.keyCode === 117)) {
 		                alert('Acción no permitida ¿estás intentando vulnerar el sitio :(?');
 		            }
 		            return true;

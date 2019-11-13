@@ -27,7 +27,6 @@ function EnviarResultado() {
     var params = ("calificacion="+stringPares + "&lectura=" + "02" + "&unidad="+ "01");
     http.open("POST", url, false);
     http.send(params);
-    //alert("Obtuviste  " + numeroPares + " de " + "10 pares posibles.");
     window.location.href = "/home/obligatorias"
     
 }

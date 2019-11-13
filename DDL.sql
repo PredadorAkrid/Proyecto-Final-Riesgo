@@ -74,4 +74,6 @@ insert into alumno(idRegistroAlumno, nombre) values (1,'Alexis');
 insert into tutor (idRegistroTutor, nombre, aPaterno, aMaterno, fNacimiento ) values (1, 'Dulce', 'Amaya', 'Lopez', '1990-05-20');
 insert into grupo(idGrupo,idTutor) values ('G2020-1%@L', 1);
 insert into grupo_alumno(idGrupo, idAlumno) values ('G2020-1%@L',1);
-insert into actividad(idGrupo,idAlumno, actividad_1) values ('G2020-1%@L',1,10);
+insert into actividad(idGrupo,idAlumno) values ('G2020-1%@L',1);
+
+
