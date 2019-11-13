@@ -66,9 +66,8 @@ def add_header(response):
 @app.route("/", methods=['GET', 'POST'])
 def Index():
 	if request.method == 'GET':
-		
-		
-		
+		if 'nombre' in session:
+			return removeSession()
 		return render_template("index.html")
 	elif request.method == 'POST':
 		
@@ -169,6 +168,8 @@ def removeSession():
 @app.route('/register', methods=['GET', 'POST'])
 def Register():
 	if request.method == 'GET':
+		if 'nombre' in session:
+			return removeSession()
 		return render_template("registro.html")
 	elif request.method == 'POST':
 		if 'back-button' in request.form:
@@ -196,36 +197,35 @@ def RegisterUser():
     		
 			inscrito = db_session.query(Grupo).filter(Grupo.idgrupo == grupo).first()
 			if(inscrito != None):
-				print("entra a inscrito")
-				
-				nuevoRegistro = RegistroAlumno(usuario = usuario, contraseña = claveCifrada)
-				
-				db_session.add(nuevoRegistro)
-				db_session.commit()
-				idRegistro = db_session.query(RegistroAlumno).filter(RegistroAlumno.usuario == usuario).filter(RegistroAlumno.contraseña == claveCifrada ).first()
-				print("Imprimimos el id del registro del alumno")
-				print(idRegistro.idregistroalumno)
-				idAl = idRegistro.idregistroalumno
-				nuevoAlumno =  Alumno(idregistroalumno= idAl, nombre=name)
-				
-				db_session.add(nuevoAlumno)
-				db_session.commit()
-				idAlumno = db_session.query(Alumno).filter(Alumno.idregistroalumno == idAl).first()
-				print("El id del alumno es " + str(idAlumno.idalumno))
-
-				grupAlu = GrupoAlumno(idgrupo = grupo , idalumno = idAlumno.idalumno)
-				db_session.add(grupAlu)
-				db_session.commit()
-
-				newAct = Actividad(idgrupo=grupo, idalumno= idAlumno.idalumno)
-				db_session.add(newAct)
-				db_session.commit()
-				return redirect(url_for('Index'))
-
+				validaUsuario = db_session.query(RegistroAlumno).filter(RegistroAlumno.usuario == usuario).first()
+				if(validaUsuario == None):
+					nuevoRegistro = RegistroAlumno(usuario = usuario, contraseña = claveCifrada)
+					db_session.add(nuevoRegistro)
+					db_session.commit()
+					idRegistro = db_session.query(RegistroAlumno).filter(RegistroAlumno.usuario == usuario).filter(RegistroAlumno.contraseña == claveCifrada ).first()
+					print("Imprimimos el id del registro del alumno")
+					print(idRegistro.idregistroalumno)
+					idAl = idRegistro.idregistroalumno
+					nuevoAlumno =  Alumno(idregistroalumno= idAl, nombre=name)
+					db_session.add(nuevoAlumno)
+					db_session.commit()
+					idAlumno = db_session.query(Alumno).filter(Alumno.idregistroalumno == idAl).first()
+					print("El id del alumno es " + str(idAlumno.idalumno))
+					grupAlu = GrupoAlumno(idgrupo = grupo , idalumno = idAlumno.idalumno)
+					db_session.add(grupAlu)
+					db_session.commit()
+					newAct = Actividad(idgrupo=grupo, idalumno= idAlumno.idalumno)
+					db_session.add(newAct)
+					db_session.commit()
+					return redirect(url_for('Index'))
+				else:
+					print("Entra al flush de usuario")
+					flash("El usuario ya existe")
+					return redirect(request.path)
 			else:
+				flash("El grupo no existe")
 				print("Aquí hay que meter un flush")
-				db_session.rollback()
-				return redirect(url_for('Register'))
+				return redirect(request.path)
 
 		except:	
 				print("Ocurrió una excepción")

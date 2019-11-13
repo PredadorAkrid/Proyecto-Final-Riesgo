@@ -28,6 +28,13 @@
 		        }	
   	  </script>
 	<div class="container">
+		{% with messages = get_flashed_messages() %}
+			{% if messages %}
+				<div class="notification is-danger">
+					{{messages[0]}}
+				</div>
+			{% endif %}
+		{% endwith %}
 		<form name="form_arrow" method="POST">	
 			<button id="back" class="izq side" type="submit" name="back-button">
 				<img src="{{ url_for('static', filename='img/left-arrow.png') }}">
