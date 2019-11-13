@@ -32,7 +32,7 @@ app = Flask(__name__)
 app.secret_key = "qwerty@%1423" #seed para las sesiones , encripta las sesiones
 
 
-'''
+
 POSTGRES = {
     'user': 'postgres',
     'pw': '1234',
@@ -41,12 +41,12 @@ POSTGRES = {
     'port': '5432',
 }
 
-'''
+
 app.config['DEBUG'] = True
-'''
+
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://%(user)s:\
 %(pw)s@%(host)s:%(port)s/%(db)s' % POSTGRES
-'''
+
 
 
 
@@ -116,7 +116,7 @@ def Index():
 
 			
 		elif 'register_button' in request.form:
-			return redirect(url_for('Register')) # do something else
+			return redirect(url_for('Register')) 
 """
 	Método interno para remover una sesión si intentan redireccionar o pican el boton salir	
 """
