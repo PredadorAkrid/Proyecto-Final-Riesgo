@@ -35,7 +35,7 @@ app.secret_key = "qwerty@%1423" #seed para las sesiones , encripta las sesiones
 
 POSTGRES = {
     'user': 'postgres',
-    'pw': '4l3xispassword#',
+    'pw': '1234',
     'db': 'dummy_db',
     'host': 'localhost',
     'port': '5432',
@@ -74,7 +74,7 @@ def Index():
 		return render_template("index.html")
 	elif request.method == 'POST':
 		
-		
+		print("Entra a post")
 		#Verificamos los datos que recibimos del form login
 		if 'login_button' in request.form:
 			usuario = request.form['usuario'];
@@ -85,6 +85,7 @@ def Index():
 			passwordFinal = ""
 			if(resultAlumnosAux != None):
 				#Si el if se cumple redireccionamos al home de alumno y creamos una sesión con su usuario/contraseña
+				print("Entró al if usuario no vacio")
 				if(verify_password(resultAlumnosAux.contraseña, password)):
 					passwordFinal = resultAlumnosAux.contraseña
 					result_alumnos = db_session.query(RegistroAlumno).filter(RegistroAlumno.usuario == usuario).filter(RegistroAlumno.contraseña == passwordFinal).first()
@@ -95,6 +96,7 @@ def Index():
 					flash("Contraseña incorrecta")
 					return redirect(url_for('Index'))
 			elif(resultTutoresAux != None):
+				print("Entró al if tutor no vacio")
 				#Si el if se cumple redireccionamos al home de profesor y creamos una sesión con su usuario/contraseña
 				if(verify_password(resultTutoresAux.contraseña, password)):
 					passwordFinal = resultTutoresAux.contraseña
@@ -108,10 +110,14 @@ def Index():
 			elif(resultAlumnosAux == None and resultTutoresAux == None):
 				flash("Datos incorrectos")
 				return redirect(url_for('Index'))
-
+			else:
+				print("Entró al else")
+				return removeSession()
 			
 		elif 'register_button' in request.form:
 			return redirect(url_for('Register')) 
+		else: 
+			return removeSession()
 """
 	Método interno para remover una sesión si intentan redireccionar o pican el boton salir	
 """

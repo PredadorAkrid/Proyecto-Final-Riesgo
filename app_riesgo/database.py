@@ -4,7 +4,7 @@ from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import Session
 #creamos el motor con la url de la base en postgres
-engine = create_engine('postgresql://postgres:4l3xispassword#@localhost/dummy_db', convert_unicode=True, pool_size=10, max_overflow=20)
+engine = create_engine('postgresql://postgres:1234@localhost/dummy_db', convert_unicode=True, pool_size=10, max_overflow=20)
 connection = engine.connect()
 #Automapeamos la base con el ORM, así no tenemos que definir todas las tablas manualmente
 Base = automap_base()
