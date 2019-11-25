@@ -17,7 +17,7 @@ Repositorio para el desarrollo del proyecto final de Riesgo Tecnológico 2020-1
 * Pip3                                                python3 get-pip.py --Linux (Distribuciones Debian)
 * Virtualenv                                          pip install virtualenv
 * Windows 10 o Linux compatible con python >= 3.0
-* Postgres 10 o superior y PGADMIN4 (opcional)
+* Postgresql 10 o superior y PGADMIN4 (opcional)
 
 ## Instalación
 
