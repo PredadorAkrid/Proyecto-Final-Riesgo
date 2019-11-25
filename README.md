@@ -41,6 +41,9 @@ Repositorio para el desarrollo del proyecto final de Riesgo Tecnológico 2020-1
 
 ### Paso 8 - Correr el siguiene comando en la carpeta donde se encuentra el archivo app.py
       * python3 app-py
+### Paso 9 entrar a localhost:3000 y probar las credenciales de prueba:
+      * Profesor amaya221 pru3baprof3sor
+      * Alumno alexis 4l3xis3schido
 ## Estructura del proyecto
 
 
