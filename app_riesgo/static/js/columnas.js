@@ -65,7 +65,6 @@ function revisar(){
 
 }
 function revisar1(){
-	alert("Tuviste bien "+bien+" aciertos de 5.");
 	var calif = bien
   	var stringPares;
     if(calif == 5){
@@ -75,6 +74,7 @@ function revisar1(){
    	  calif = calif*2
       stringPares = "0"+calif
     }
+    alert("Tuviste bien "+bien+" aciertos de 5.");
     var http = new XMLHttpRequest();
     var url = "/calif-lectura";
     alert("Tu calificación es: " + stringPares)
