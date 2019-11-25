@@ -17,6 +17,7 @@ Repositorio para el desarrollo del proyecto final de Riesgo Tecnológico 2020-1
 * Pip3                                                python3 get-pip.py --Linux (Distribuciones Debian)
 * Virtualenv                                          pip install virtualenv
 * Windows 10 o Linux compatible con python >= 3.0
+* Postgres 10 o superior y PGADMIN4 (opcional)
 
 ## Instalación
 
@@ -34,7 +35,11 @@ Repositorio para el desarrollo del proyecto final de Riesgo Tecnológico 2020-1
        * activate.sh
 ### Paso 4 - Ir a la carpeta ProyectoFinalRiesgo y ejecutar el comando:
       * pip3 install -r requirements.txt
-### Paso 5 -  Una vez instalado los requerimientos ir a la carpeta app_riesgo y ejecutar:
+### Paso 6 -  Una vez instalado los requerimientos crear la base de datos y restaurar el .sql
+
+### Paso 7 - Ir al archivo database.py y cambiar la url por la url de la base local (usuario contraseña y nombre de la base de datos)
+
+### Paso 8 - Correr el siguiene comando en la carpeta donde se encuentra el archivo app.py
       * python3 app-py
 ## Estructura del proyecto
 
