@@ -12,8 +12,9 @@ cartas.forEach((element)=>{
 })
 
 function EnviarResultado() {
-    alert("Obtuviste  " + numeroPares + " de " + "10 pares posibles.");
     var numeroPares=guardaPares.length
+    alert("Obtuviste  " + numeroPares + " de " + "10 pares posibles.");
+
     var stringPares;
     if(numeroPares == 10){
       stringPares = "10"
@@ -32,8 +33,9 @@ function EnviarResultado() {
 }
 
 function EnviarResultado2() {
-    alert("Obtuviste  " + numeroPares + " de " + "5 pares posibles.");
     var numeroPares=guardaPares.length
+    alert("Obtuviste  " + numeroPares + " de " + "5 pares posibles.");
+
     var numParesAux = numeroPares*2
     var stringPares;
     if(numParesAux == 10){
