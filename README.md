@@ -44,6 +44,7 @@ Repositorio para el desarrollo del proyecto final de Riesgo Tecnológico 2020-1
 ### Paso 9 entrar a localhost:3000 y probar las credenciales de prueba:
       * Profesor amaya221 pru3baprof3sor
       * Alumno alexis 4l3xis3schido
+      * Grupo prueba 'G2020-1%@L'
 ## Estructura del proyecto
 
 
